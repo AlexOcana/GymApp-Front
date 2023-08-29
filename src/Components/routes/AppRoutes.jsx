@@ -4,6 +4,7 @@ import AboutUs from "../pages/AboutUs/AboutUs"
 import Login from '../pages/Login/Login'
 import Signup from '../pages/Signup/Signup'
 import Exercises from '../pages/Exercises/Exercises'
+import CreateRoutine from "../pages/CreateRoutine/CreateRoutine"
 
 const AppRoutes = () => {
 
@@ -15,6 +16,7 @@ const AppRoutes = () => {
             <Route path={'/login'} element={<Login />} />
             <Route path={'/signup'} element={<Signup />} />
             <Route path={'/exercises'} element={<Exercises />} />
+            <Route path={'/newroutine'} element={<CreateRoutine />} />
             <Route path={'*'} element={<p>EL ERROR</p>} />
         </Routes>
 
