@@ -7,6 +7,7 @@ import Exercises from '../pages/Exercises/Exercises'
 import Routines from "../pages/ShowRutines/Routines"
 import MyProfile from "../pages/MyProfile/MyProfile"
 
+import CreateRoutine from "../pages/CreateRoutine/CreateRoutine"
 
 const AppRoutes = () => {
 
@@ -20,6 +21,7 @@ const AppRoutes = () => {
             <Route path={'/exercises'} element={<Exercises />} />
             <Route path={'/routines'} element={<Routines />} />
             <Route path={'/myProfile'} element={<MyProfile />} />
+            <Route path={'/newroutine'} element={<CreateRoutine />} />
             <Route path={'*'} element={<p>EL ERROR</p>} />
         </Routes>
 
