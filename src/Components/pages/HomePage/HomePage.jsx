@@ -5,12 +5,11 @@ import './homepage.css'
 const HomePage = () => {
     return (
         <div className="HomePage">
-            <Container
 
-
-                className="d-flex justify-content-center ">
+            <Container>
 
                 <div className="video">
+
                     <VideoPlayer />
                 </div>
                 <h1>GymApp</h1>
