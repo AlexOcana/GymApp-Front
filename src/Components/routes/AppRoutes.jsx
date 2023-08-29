@@ -4,6 +4,9 @@ import AboutUs from "../pages/AboutUs/AboutUs"
 import Login from '../pages/Login/Login'
 import Signup from '../pages/Signup/Signup'
 import Exercises from '../pages/Exercises/Exercises'
+import Routines from "../pages/ShowRutines/Routines"
+import MyProfile from "../pages/MyProfile/MyProfile"
+
 
 const AppRoutes = () => {
 
@@ -15,6 +18,8 @@ const AppRoutes = () => {
             <Route path={'/login'} element={<Login />} />
             <Route path={'/signup'} element={<Signup />} />
             <Route path={'/exercises'} element={<Exercises />} />
+            <Route path={'/routines'} element={<Routines />} />
+            <Route path={'/myProfile'} element={<MyProfile />} />
             <Route path={'*'} element={<p>EL ERROR</p>} />
         </Routes>
 

@@ -9,6 +9,7 @@ const App = () => {
 
       <Navigation />
       <AppRoutes />
+
     </div>
   )
 }
