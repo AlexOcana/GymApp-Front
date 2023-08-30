@@ -6,12 +6,9 @@ import Signup from '../pages/Signup_page/Signup'
 import Exercises from '../pages/SearchExercices_page/Exercises'
 import Routines from "../pages/ShowRutines_page/Routines"
 import MyProfile from "../pages/MyProfile_page/MyProfile"
-
 import CreateRoutine from "../pages/CreateRoutine_page/CreateRoutine"
 
 const AppRoutes = () => {
-
-    // TODO: RENOMBRAR TODOS LOS COMPONENTS DE /pages CON EL SUFIJO PAGES
 
     return (
 

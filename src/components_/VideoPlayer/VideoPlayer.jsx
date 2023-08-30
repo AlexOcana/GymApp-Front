@@ -4,8 +4,8 @@ const VideoPlayer = () => {
 
     return (
         <ReactPlayer
-            width={window.innerWidth}
-            height={window.innerWidth}
+            width={'100vw'}
+            height={'100vh'}
             playing={true}
             loop={true}
             controls={false}
