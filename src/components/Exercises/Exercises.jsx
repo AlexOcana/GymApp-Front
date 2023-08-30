@@ -12,7 +12,7 @@ function Exercises() {
             method: 'GET',
             url: 'https://exercisedb.p.rapidapi.com/exercises/',
             headers: {
-                'X-RapidAPI-Key': 'a82e159e14msh060e0125dd08c56p1b8b49jsn7efda9f3b03f',
+                'X-RapidAPI-Key': '3f82b74a4bmshf93f02834abe6d0p19e87ejsn6d9218f99099',
                 'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
             }
         };
