@@ -12,8 +12,6 @@ import CreateRoutine from "../pages/CreateRoutine_page/CreateRoutine"
 
 const AppRoutes = () => {
 
-    // TODO: RENOMBRAR TODOS LOS COMPONENTS DE /pages CON EL SUFIJO PAGES
-
     return (
 
         <Routes>
