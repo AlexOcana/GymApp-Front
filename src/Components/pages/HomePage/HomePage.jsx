@@ -9,10 +9,10 @@ const HomePage = () => {
             <Container>
 
                 <div className="video">
-
                     <VideoPlayer />
                 </div>
-                <h1>GymApp</h1>
+
+                <h1>{import.meta.env.VITE_APP_NAME}</h1>
 
             </Container >
         </div>

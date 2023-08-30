@@ -3,6 +3,8 @@ import { Form, Container, Button, Row, Col } from "react-bootstrap"
 
 const CreateRoutine = () => {
 
+    // TODO: DESACOPLAR FORMULARIO
+
     const [routineData, setRoutineData] = useState({
         title: '',
         description: '',
@@ -62,6 +64,8 @@ const CreateRoutine = () => {
                         <Form.Label>Description</Form.Label>
                         <Form.Control value={routineData.description} type="text" name="description" onChange={handleInputChange} />
                     </Form.Group>
+
+                    {/* TODO OPCIONAL: DESACOPLAR LÓGICAS DE INPUTS */}
 
                     {
                         inputList.map((x, i) => {

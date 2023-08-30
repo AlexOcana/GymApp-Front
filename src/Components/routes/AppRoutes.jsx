@@ -11,6 +11,8 @@ import CreateRoutine from "../pages/CreateRoutine/CreateRoutine"
 
 const AppRoutes = () => {
 
+    // TODO: RENOMBRAR TODOS LOS COMPONENTS DE /pages CON EL SUFIJO PAGES
+
     return (
 
         <Routes>
@@ -24,12 +26,7 @@ const AppRoutes = () => {
             <Route path={'/newroutine'} element={<CreateRoutine />} />
             <Route path={'*'} element={<p>EL ERROR</p>} />
         </Routes>
-
-
     )
-
-
-
 }
 
 

@@ -7,7 +7,7 @@ const Navigation = () => {
         <Navbar bg="dark" data-bs-theme="dark" className='mb-5' expand="lg">
             <Container>
                 <Navbar.Brand>
-                    <Link className='nav-link' to={'/'}>GymApp</Link>
+                    <Link className='nav-link' to={'/'}>{import.meta.env.VITE_APP_NAME}</Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
