@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Navigation = () => {
     return (
 
-        <Navbar bg="dark" data-bs-theme="dark" className='mb-5' expand="lg">
+        <Navbar bg="dark" data-bs-theme="dark" expand="lg">
             <Container>
                 <Navbar.Brand>
                     <Link className='nav-link' to={'/'}>{import.meta.env.VITE_APP_NAME}</Link>
@@ -13,10 +13,14 @@ const Navigation = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Link to={'/'} className='nav-link'>Home</Link>
-                        <Link to={'/aboutus'} className='nav-link'>About Us</Link>
                         <Link to={'/exercises'} className='nav-link'>Exercises</Link>
                         <Link to={'/routines'} className='nav-link'>Routines</Link>
                         <Link to={'/newroutine'} className='nav-link'>Create Routine</Link>
+                        <Link to={'/aboutus'} className='nav-link'>About Us</Link>
+                        <Link to={'/signUp'} className=' nav-link'>SignUp</Link>
+                        <Link to={'/Login'} className='nav-link'>Log In</Link>
+
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import SearchBar from "../../Searchbar/Searchbar";
+import SearchBar from "../../components_/Searchbar/Searchbar";
 import ListGroup from 'react-bootstrap/ListGroup';
 
 function Exercises() {
@@ -47,6 +47,7 @@ function Exercises() {
     return (
 
         // TODO: PRESTAR ATENCIÓN EN LA INTEGRACIÓN DEL UI FRAMEWORK -> https://react-bootstrap.netlify.app/docs/components/list-group#basic-example
+
         <div>
             <SearchBar
                 keyword={searchTerm}
