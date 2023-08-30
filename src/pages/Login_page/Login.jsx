@@ -1,8 +1,8 @@
 import { useContext, useState } from "react"
 import { Form, Button, Modal } from "react-bootstrap"
-import authService from "../../services/auth.services"
 import { useNavigate } from "react-router-dom"
-import { AuthContext } from "../../contexts/auth.context"
+// import { AuthContext } from "../../contexts/auth.context"
+// import authService from "../../services/auth.services"
 
 
 const Login = () => {

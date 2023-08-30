@@ -59,7 +59,10 @@ function Exercises() {
                 <ListGroup.Item>
                     {filteredExercises.length > 0 && (
                         filteredExercises.map(exercise => (
-                            <p key={exercise.id}>{exercise.name}</p>
+                            <>
+                                <p key={exercise.id}>{exercise.name}</p>
+                                <img src={exercise.gifUrl} />
+                            </>
                         ))
                     )}
                 </ListGroup.Item>
