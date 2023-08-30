@@ -1,42 +1,16 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import SearchBar from "../../Searchbar/Searchbar";
+import SearchBar from "../../components_/Searchbar/Searchbar";
 import ListGroup from 'react-bootstrap/ListGroup';
+import ExerciseService from '../../services/exercise.services'
 
 function Exercises() {
-
     const [exerciseData, setExerciseData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const exerciseService = new ExerciseService();
 
-    useEffect(() => loadExercises(), [searchTerm])
-
-    const loadExercises = () => {
-
-        // TODO: DESACOPLAR A SERVICIOS
-
-        const options = {
-            method: 'GET',
-            url: 'https://exercisedb.p.rapidapi.com/exercises/',
-            headers: {
-                'X-RapidAPI-Key': '3f82b74a4bmshf93f02834abe6d0p19e87ejsn6d9218f99099',
-                'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
-            }
-        }
-
-        if (searchTerm) {
-            axios.request(options)
-                .then(response => {
-                    setExerciseData(response.data);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        } else {
-
-            setExerciseData([]);
-        }
-    }
-
+    useEffect(() => {
+        exerciseService.searchExercises(searchTerm, setExerciseData, console.error);
+    }, [searchTerm]);
 
     // TODO: REVISAR SI LA API NO DISPONE DE ENDPOINTS PARA LOCALIZAR EJERCICIOS POR QUERY
 
@@ -45,27 +19,19 @@ function Exercises() {
     );
 
     return (
-
-        // TODO: PRESTAR ATENCIÓN EN LA INTEGRACIÓN DEL UI FRAMEWORK -> https://react-bootstrap.netlify.app/docs/components/list-group#basic-example
+        // TODO: PRESTAR ATENCIÓN EN LA INTEGRACIÓN DEL UI FRAMEWORK
         <div>
             <SearchBar
                 keyword={searchTerm}
                 onChange={(value) => setSearchTerm(value)}
             />
             <ListGroup>
-
-                {/* TODO: DESACOPLAR LISTA */}
-
-                <ListGroup.Item>
-                    {filteredExercises.length > 0 && (
-                        filteredExercises.map(exercise => (
-                            <>
-                                <p key={exercise.id}>{exercise.name}</p>
-                                <img src={exercise.gifUrl} />
-                            </>
-                        ))
-                    )}
-                </ListGroup.Item>
+                {filteredExercises.map(exercise => (
+                    <ListGroup.Item key={exercise.id}>
+                        <p>{exercise.name}</p>
+                        <img src={exercise.gifUrl} alt={exercise.name} />
+                    </ListGroup.Item>
+                ))}
             </ListGroup>
         </div>
     );
