@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import SearchBar from "../../Searchbar/Searchbar";
+import SearchBar from "../../components_/Searchbar/Searchbar";
 import ListGroup from 'react-bootstrap/ListGroup';
 
 function Exercises() {

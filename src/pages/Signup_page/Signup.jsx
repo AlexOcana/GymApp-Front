@@ -1,16 +1,10 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-<<<<<<< HEAD:src/Components/pages/Signup/Signup.jsx
-import authService from "../../../services/auth.services"
-=======
 // import authService from "../../services/auth.services"
->>>>>>> 75a3cb21494ebf4f2beb1973b79ee66fbfd82c83:src/pages/Signup_page/Signup.jsx
 import { useNavigate } from "react-router-dom";
 
 
-const signup = () => {
-
-    // TODO: MAYTUSCULA EN NOMBRES DE COMPONENTESK
+const Signup = () => {
 
     const [signupData, setSignupData] = useState({
         firstname: '',
@@ -64,4 +58,4 @@ const signup = () => {
     );
 }
 
-export default signup;
+export default Signup;
