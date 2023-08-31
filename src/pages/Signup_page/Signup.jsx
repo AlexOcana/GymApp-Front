@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import authService from "../../services/auth.services"
 import { useNavigate } from "react-router-dom";
+import uploadServices from "../../services/upload.services";
 
 
 const Signup = () => {
@@ -10,10 +11,13 @@ const Signup = () => {
         firstname: '',
         lastname: '',
         email: '',
-        password: ''
+        password: '',
+        avatar: ''
     });
 
     const navigate = useNavigate();
+
+    const [loadingImage, setLoadingImage] = useState(false)
 
     const handleInputChange = e => {
         const { value, name } = e.target;
@@ -28,6 +32,26 @@ const Signup = () => {
             .catch(err => console.log(err));
     };
 
+    const handleFileUpload = e => {
+
+        setLoadingImage(true)
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(({ data }) => {
+                setSignupData({ ...signupData, avatar: data.cloudinary_url })
+                setLoadingImage(false)
+            })
+            .catch(err => {
+                console.log(err)
+
+                setLoadingImage(false)
+            })
+    }
+
     return (
         <Form onSubmit={handleFormSubmit}>
             <Form.Group className="mb-3" controlId="firstname">
@@ -40,6 +64,12 @@ const Signup = () => {
                 <Form.Control type="text" value={signupData.lastName} onChange={handleInputChange} name="lastname" />
             </Form.Group>
 
+            <Form.Group className="mb-3" controlId="image">
+                <Form.Label>Avatar</Form.Label>
+                <Form.Control type="file" onChange={handleFileUpload} />
+            </Form.Group>
+
+
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" value={signupData.email} onChange={handleInputChange} name="email" />
@@ -50,7 +80,7 @@ const Signup = () => {
                 <Form.Control type="password" value={signupData.password} onChange={handleInputChange} name="password" />
             </Form.Group>
             <div className="d-grid">
-                <Button variant="dark" type="submit">Register</Button>
+                <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Uploading Image...' : 'Register'}</Button>
             </div>
 
         </Form>
