@@ -5,15 +5,29 @@ import Login from "../../components_/LoginForm/LoginForm";
 import SignUpForm from '../SignUpForm/SignUpForm';
 
 const Navigation = () => {
+
     const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showSignupModal, setShowSignupModal] = useState(false);
+
 
     const handleLoginModalShow = () => {
         setShowLoginModal(true);
+
     };
 
     const handleLoginModalClose = () => {
         setShowLoginModal(false);
     };
+
+    const handleSignupModalShow = () => {
+        setShowSignupModal(true);
+
+    };
+
+    const handleSignupModalClose = () => {
+        setShowSignupModal(false);
+    };
+
 
     return (
         <div>
@@ -30,8 +44,8 @@ const Navigation = () => {
                             <Link to={'/routines'} className='nav-link'>Routines</Link>
                             <Link to={'/newroutine'} className='nav-link'>Create Routine</Link>
                             <Link to={'/aboutus'} className='nav-link'>About Us</Link>
-                            <Link to={'/signUp'} className='nav-link'>SignUp</Link>
                             <Link to={'#'} className='nav-link' onClick={handleLoginModalShow}>Login</Link>
+                            <Link to={'#'} className='nav-link' onClick={handleSignupModalShow}>Signup</Link>
                             <Link to={'/myprofile'} className='nav-link'>My Profile</Link>
                         </Nav>
                     </Navbar.Collapse>
@@ -40,7 +54,14 @@ const Navigation = () => {
 
             <Modal show={showLoginModal} onHide={handleLoginModalClose}>
                 <Modal.Body>
-                    <Login />
+                    <Login handleClose={handleLoginModalClose} />
+                </Modal.Body>
+            </Modal>
+
+
+            <Modal show={showSignupModal} onHide={handleSignupModalClose}>
+                <Modal.Body>
+                    <SignUpForm handleClose={handleSignupModalClose} />
                 </Modal.Body>
             </Modal>
         </div>
