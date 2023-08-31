@@ -1,4 +1,4 @@
-import VideoPlayer from "../../components_/VideoPlayer/VideoPlayer"
+import VideoPlayer from "../../VideoPlayer/VideoPlayer"
 import './homepage.css'
 
 const HomePage = () => {
