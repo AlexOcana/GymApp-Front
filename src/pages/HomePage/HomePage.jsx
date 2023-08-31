@@ -7,10 +7,11 @@ const HomePage = () => {
         <>
 
             <div className="video">
-                <VideoPlayer />
+                {/* <VideoPlayer /> */}
+
             </div>
 
-            <h1>{import.meta.env.VITE_APP_NAME}</h1>
+            {/* <h1>{import.meta.env.VITE_APP_NAME}</h1> */}
         </>
     )
 

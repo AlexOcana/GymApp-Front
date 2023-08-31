@@ -5,13 +5,14 @@ import { AuthProviderWrapper } from './contexts/auth.context'
 import 'bootstrap/dist/css/bootstrap.css'
 import App from './components_/App.jsx'
 import './index.css'
+import { AuthProviderWrapper } from './contexts/auth.context.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Router>
-    <React.StrictMode>
-      <AuthProviderWrapper>
+  <React.StrictMode>
+    <AuthProviderWrapper>
+      <Router>
         <App />
-      </AuthProviderWrapper>
-    </React.StrictMode>
-  </Router>
+      </Router>
+    </AuthProviderWrapper>
+  </React.StrictMode>
 )
