@@ -1,4 +1,4 @@
-import VideoPlayer from '../../components_/VideoPlayer/VideoPlayer'
+// import VideoPlayer from '../../components_/VideoPlayer/VideoPlayer'
 import './homepage.css'
 
 const HomePage = () => {
@@ -7,7 +7,7 @@ const HomePage = () => {
         <>
 
             <div className="video">
-                <VideoPlayer />
+                {/* <VideoPlayer /> */}
 
             </div>
 

@@ -35,7 +35,7 @@ function LoginForm({ handleClose }) {
 
     return (
         <>
-            <Modal.Header closeButton>
+            <Modal.Header>
                 <Modal.Title>Login</Modal.Title>
             </Modal.Header>
             <Modal.Body>
