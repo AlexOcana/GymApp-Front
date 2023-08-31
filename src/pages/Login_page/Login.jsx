@@ -1,8 +1,8 @@
 import { useContext, useState } from "react"
 import { Form, Button, Modal } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
-// import { AuthContext } from "../../contexts/auth.context"
-// import authService from "../../services/auth.services"
+import { AuthContext } from "../../contexts/auth.context"
+import authService from "../../services/auth.services"
 
 
 const Login = () => {
@@ -13,6 +13,7 @@ const Login = () => {
         email: '',
         password: ''
     });
+
     const navigate = useNavigate();
 
     const { authenticateUser, storeToken } = useContext(AuthContext);
@@ -24,14 +25,12 @@ const Login = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log("Submitting login data:", loginData);
         authService
             .login(loginData)
             .then(({ data }) => {
                 console.log("Login response data:", data);
                 storeToken(data.authToken);
                 authenticateUser();
-                console.log("User authenticated. Navigating to /");
                 navigate('/');
             })
             .catch(err => console.log("Login error:", err));

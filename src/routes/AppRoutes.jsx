@@ -18,12 +18,12 @@ const AppRoutes = () => {
             <Route path={'/'} element={<HomePage />} />
             <Route path={'/aboutus'} element={<AboutUs />} />
             <Route path={'/exercises'} element={<Exercises />} />
-            <Route path={'/newroutine'} element={<CreateRoutine />} />
             <Route path={'/login'} element={<Login />} />
             <Route path={'/signup'} element={<Signup />} />
 
 
             <Route element={<PrivateRoute />}>
+                <Route path={'/newroutine'} element={<CreateRoutine />} />
                 <Route path={'/myProfile'} element={<MyProfile />} />
                 <Route path={'/routines'} element={<Routines />} />
             </Route>

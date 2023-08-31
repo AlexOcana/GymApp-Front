@@ -15,15 +15,14 @@ const AboutUs = () => {
                             <p className="mt-2">¡Hola, futuro maestro jedi del levantamiento de pesas y hechicero de las cintas de correr! En nuestra galaxia del gimnasio,
                                 nos tomamos tan en serio el acondicionamiento físico como un hobbit se toma sus segundos desayunos.
                                 Somos como ese compañero de aventuras en los videojuegos que siempre tiene un aperitivo saludable
-                                en una mano y un control de Wii en la otra.<br></br>
-                                <br></br>
-                                Nuestros superpoderes incluyen contar repeticiones más rápido que una calculadora y realizar
+                                en una mano y un control de Wii en la otra.
+                            </p>
+                            <p>Nuestros superpoderes incluyen contar repeticiones más rápido que una calculadora y realizar
                                 estiramientos que harían envidiar a Elastigirl.
                                 Aquí, cada día es como un nuevo nivel de juego. Nuestros entrenadores son como guías de mazmorra,
                                 excepto que las mazmorras son las áreas de
-                                cardio y las recompensas son músculos tonificados. <br>
-                                </br>
-                                <br></br>
+                                cardio y las recompensas son músculos tonificados. </p>
+                            <p>
                                 ¡No encontrarás dragones aquí, pero podrías
                                 descubrir que tu resistencia es más feroz que un dragón escupe fuego!
                                 Nuestro lema es "Levantar, reír, repetir". Si no te ríes al menos una vez
