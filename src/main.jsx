@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import App from './components_/App.jsx'
 import './index.css'
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProviderWrapper>

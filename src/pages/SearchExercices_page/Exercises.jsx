@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import SearchBar from "../../components_/Searchbar/Searchbar";
 import ListGroup from 'react-bootstrap/ListGroup';
 import ExerciseService from '../../services/exercise.services'
-
 function Exercises() {
     const [exerciseData, setExerciseData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
