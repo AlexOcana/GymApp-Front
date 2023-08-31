@@ -11,8 +11,7 @@ const CreateRoutineForm = () => {
     })
 
     const [inputList, setInputList] = useState([{
-        muscle: '',
-        exercise: '',
+        exercises: '',
         reps: 4
     }])
 
