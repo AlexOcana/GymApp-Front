@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SearchBar from "../../components_/components_/Searchbar/Searchbar";
+import SearchBar from "../../components_/Searchbar/Searchbar";
 import ListGroup from 'react-bootstrap/ListGroup';
 import ExerciseService from '../../services/exercise.services'
 
