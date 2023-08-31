@@ -17,7 +17,7 @@ class RoutineService {
     }
 
     saveRoutine(routineData) {
-        return this.api.post('/saveRoutine', routineData)
+        return this.api.post('/createRoutine', routineData)
     }
 
     deleteRoutine(routine_id) {
