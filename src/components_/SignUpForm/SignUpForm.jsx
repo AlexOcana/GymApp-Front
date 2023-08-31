@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import authService from "../../services/auth.services";
 import { useNavigate } from "react-router-dom";
-// import uploadServices from "../../services/upload.services";
+import uploadServices from "../../services/upload.services";
 
-function SignUpForm() {
+function SignUpForm({ handleClose }) {
     const [signupData, setSignupData] = useState({
         firstname: '',
         lastname: '',
@@ -12,23 +12,22 @@ function SignUpForm() {
         password: '',
         avatar: ''
     });
-
     const navigate = useNavigate();
-
     const [loadingImage, setLoadingImage] = useState(false)
     const handleInputChange = e => {
         const { value, name } = e.target;
         setSignupData({ ...signupData, [name]: value });
     };
-
     const handleFormSubmit = e => {
         e.preventDefault();
         authService
             .signup(signupData)
-            .then(() => navigate('/'))
+            .then(() => {
+                handleClose()
+                navigate('/')
+            })
             .catch(err => console.log(err));
     };
-
     const handleFileUpload = e => {
         setLoadingImage(true)
         const formData = new FormData()
@@ -44,7 +43,6 @@ function SignUpForm() {
                 setLoadingImage(false)
             })
     }
-
     return (
         <Form onSubmit={handleFormSubmit}>
             <Form.Group className="mb-3" controlId="firstname">
@@ -73,5 +71,4 @@ function SignUpForm() {
         </Form>
     );
 }
-
 export default SignUpForm;
