@@ -4,7 +4,6 @@ const CreateRoutinePage = () => {
 
     return (
         <>
-
             <CreateRoutineForm />
         </>
     )
