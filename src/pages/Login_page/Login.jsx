@@ -39,8 +39,6 @@ const Login = () => {
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
 
-    console.log("Rendering Login component");
-
     return (
         <>
             <Button variant="dark" onClick={handleShow}>Login</Button>
