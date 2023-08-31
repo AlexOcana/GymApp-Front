@@ -3,7 +3,6 @@ import { Navbar, Nav, Container, Modal, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Login from "../../components_/LoginForm/LoginForm";
 import SignUpForm from '../SignUpForm/SignUpForm';
-
 const Navigation = () => {
 
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -14,21 +13,15 @@ const Navigation = () => {
         setShowLoginModal(true);
 
     };
-
     const handleLoginModalClose = () => {
         setShowLoginModal(false);
     };
-
     const handleSignupModalShow = () => {
         setShowSignupModal(true);
-
     };
-
     const handleSignupModalClose = () => {
         setShowSignupModal(false);
     };
-
-
     return (
         <div>
             <Navbar bg="dark" variant="dark" expand="lg">
@@ -51,13 +44,11 @@ const Navigation = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-
             <Modal show={showLoginModal} onHide={handleLoginModalClose}>
                 <Modal.Body>
                     <Login handleClose={handleLoginModalClose} />
                 </Modal.Body>
             </Modal>
-
 
             <Modal show={showSignupModal} onHide={handleSignupModalClose}>
                 <Modal.Body>
@@ -67,5 +58,4 @@ const Navigation = () => {
         </div>
     );
 };
-
 export default Navigation;

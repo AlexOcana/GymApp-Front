@@ -12,15 +12,12 @@ function SignUpForm({ handleClose }) {
         password: '',
         avatar: ''
     });
-
     const navigate = useNavigate();
-
     const [loadingImage, setLoadingImage] = useState(false)
     const handleInputChange = e => {
         const { value, name } = e.target;
         setSignupData({ ...signupData, [name]: value });
     };
-
     const handleFormSubmit = e => {
         e.preventDefault();
         authService
@@ -31,7 +28,6 @@ function SignUpForm({ handleClose }) {
             })
             .catch(err => console.log(err));
     };
-
     const handleFileUpload = e => {
         setLoadingImage(true)
         const formData = new FormData()
@@ -47,7 +43,6 @@ function SignUpForm({ handleClose }) {
                 setLoadingImage(false)
             })
     }
-
     return (
         <Form onSubmit={handleFormSubmit}>
             <Form.Group className="mb-3" controlId="firstname">
@@ -76,5 +71,4 @@ function SignUpForm({ handleClose }) {
         </Form>
     );
 }
-
 export default SignUpForm;

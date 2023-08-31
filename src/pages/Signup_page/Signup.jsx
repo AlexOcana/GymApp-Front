@@ -1,6 +1,4 @@
 import { useState } from 'react'
-
-
 const Signup = () => {
     const [showModal, setShowModal] = useState(false);
     const handleClose = () => setShowModal(false);
