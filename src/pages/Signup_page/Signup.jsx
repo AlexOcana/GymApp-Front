@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import authService from "../../services/auth.services"
-import { useNavigate } from "react-router-dom";
-
+import SignUpForm from "../../components_/SignUpForm/SignUpForm";
 
 const Signup = () => {
     const [showModal, setShowModal] = useState(false);
@@ -11,7 +8,7 @@ const Signup = () => {
 
     return (
         <>
-            <SignUpForm />
+            <Signup />
         </>
 
 

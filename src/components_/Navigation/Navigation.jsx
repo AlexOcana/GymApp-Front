@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Navbar, Nav, Container, Modal, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Login from "../../components_/LoginForm/LoginForm";
-import Signup from '../../pages/Signup_page/Signup';
+import SignUpForm from '../SignUpForm/SignUpForm';
 
 const Navigation = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
