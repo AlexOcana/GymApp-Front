@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Form, Container, Button, Row, Col } from "react-bootstrap"
 import routinesService from "../../services/routines.services"
 
@@ -11,9 +11,11 @@ const CreateRoutineForm = () => {
     })
 
     const [inputList, setInputList] = useState([{
-        exercises: '',
+        exerciseId: '',
         reps: 4
     }])
+
+    const [inputListRef, setInputListRef] = useRef([])
 
 
     const handleInputChange = e => {
@@ -38,10 +40,17 @@ const CreateRoutineForm = () => {
     }
 
     const handleAddClick = () => {
+
+        const newInput = {
+            exerciseId: '',
+            reps: 4
+        }
+
+        inputListRef.current.push(newInput)
+
         setInputList([...inputList, {
-            muscle: '',
-            exercise: '',
-            reps: 0
+            exerciseId: '',
+            reps: 4
         }])
     }
 
@@ -100,7 +109,7 @@ const CreateRoutineForm = () => {
                                         <Col>
                                             <Form.Group>
                                                 <Form.Label>Search Exercise</Form.Label>
-                                                <Form.Control value={x.exercise} type="text" name="exercise" onChange={e => handleExerciseInputChange(e, i)} />
+                                                <Form.Control value={x.exerciseId} type="text" name="exercise" onChange={e => handleExerciseInputChange(e, i)} />
                                             </Form.Group>
                                         </Col>
                                         <Col>
