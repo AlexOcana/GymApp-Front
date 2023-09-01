@@ -6,7 +6,7 @@ class ExerciseService {
             method: 'GET',
             url: 'https://exercisedb.p.rapidapi.com/exercises',
             headers: {
-                'X-RapidAPI-Key': '3f82b74a4bmshf93f02834abe6d0p19e87ejsn6d9218f99099',
+                'X-RapidAPI-Key': 'd4933db27fmshe2a635668f4aae5p150b73jsnaf2f8586368d',
                 'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
             }
         };

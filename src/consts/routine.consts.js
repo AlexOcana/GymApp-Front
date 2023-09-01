@@ -1,1 +1,1 @@
-export const ROUTINE_TYPES = ['RAW', 'STRENGTH']
+export const ROUTINE_TYPES = ['RAW', 'STRENGTH', 'FULL BODY', 'HIT', 'ENDURANCE', 'CARDIO']
