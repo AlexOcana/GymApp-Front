@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { Form, Container, Button, Row, Col } from "react-bootstrap"
 import routinesService from "../../services/routines.services"
 
@@ -15,7 +15,6 @@ const CreateRoutineForm = () => {
         reps: 4
     }])
 
-    const [inputListRef, setInputListRef] = useRef([])
 
 
     const handleInputChange = e => {
