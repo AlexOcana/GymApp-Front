@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Navbar, Nav, Container, Modal, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Login from "../../components_/LoginForm/LoginForm";
 import SignUpForm from '../SignUpForm/SignUpForm';
+import { AuthContext } from '../../contexts/auth.context';
+
 const Navigation = () => {
 
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
 
+    const { logout } = useContext(AuthContext)
 
     const handleLoginModalShow = () => {
         setShowLoginModal(true);
@@ -40,6 +43,9 @@ const Navigation = () => {
                             <Link to={'#'} className='nav-link' onClick={handleLoginModalShow}>Login</Link>
                             <Link to={'#'} className='nav-link' onClick={handleSignupModalShow}>Signup</Link>
                             <Link to={'/myprofile'} className='nav-link'>My Profile</Link>
+                            <Link to={'/'} className='nav-link' onClick={logout}>Log Out</Link>
+
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
