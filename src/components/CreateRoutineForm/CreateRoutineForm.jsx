@@ -9,7 +9,8 @@ const CreateRoutineForm = () => {
     const [routineData, setRoutineData] = useState({
         title: '',
         description: '',
-        type: ''
+        type: '',
+        owner: loggedUser
     })
 
     const [inputList, setInputList] = useState([{
@@ -55,7 +56,6 @@ const CreateRoutineForm = () => {
     }
 
     return (
-
 
         <Form onSubmit={handleRoutineSubmit}>
 

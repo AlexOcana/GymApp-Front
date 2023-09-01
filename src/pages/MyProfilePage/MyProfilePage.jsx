@@ -6,7 +6,16 @@ import './MyProfile.css'
 
 const MyProfilePage = () => {
 
+    return (
 
+        <Container>
+
+
+
+
+        </Container>
+
+    )
 }
 
 export default MyProfilePage
