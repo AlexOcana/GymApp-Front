@@ -4,9 +4,9 @@ import { Row } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card';
 import './MyProfile.css'
 
-const MyProfile = () => {
+const MyProfilePage = () => {
 
 
 }
 
-export default MyProfile
+export default MyProfilePage

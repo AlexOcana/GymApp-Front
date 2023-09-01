@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import SearchBar from "../../components_/Searchbar/Searchbar";
+import SearchBar from "../../components/Searchbar/Searchbar";
 import ListGroup from 'react-bootstrap/ListGroup';
 import ExerciseService from '../../services/exercise.services'
 import Card from 'react-bootstrap/Card';
 import { Row, Col, Container } from 'react-bootstrap'
-import '../SearchExercices_page/Exercises.css'
+import './Exercises.css'
 
-function Exercises() {
+function ExercisesPage() {
     const [exerciseData, setExerciseData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const exerciseService = new ExerciseService();
@@ -22,7 +22,7 @@ function Exercises() {
 
     return (
 
-        // TODO: PRESTAR ATENCIÓN EN LA INTEGRACIÓN DEL UI FRAMEWORK -> https://react-bootstrap.netlify.app/docs/components/list-group#basic-example
+        // TODO II: INTEGRAR EL FILTRO CONTRA LA API
 
         <div>
             <h2>Search your exercices to see how to do it !!! </h2>
@@ -34,6 +34,7 @@ function Exercises() {
                 <Row>
                     {filteredExercises.map(exercise => (
                         <Col className="mt-3">
+                            {/* TODO II: DESACOPLAR EXERCISECARD */}
                             <Card className="exercise-card">
                                 <><Card.Img src={exercise.gifUrl} alt={exercise.name} /><Card.Body key={exercise.id}>
                                     <Card.Title className="exercices-text">{exercise.name}</Card.Title>
@@ -49,4 +50,4 @@ function Exercises() {
     );
 }
 
-export default Exercises;
+export default ExercisesPage;

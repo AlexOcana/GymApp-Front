@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap"
 import './aboutus.css'
-const AboutUs = () => {
+const AboutUsPage = () => {
     return (
 
         <div className="AboutUs">
@@ -41,4 +41,4 @@ const AboutUs = () => {
     )
 }
 
-export default AboutUs
+export default AboutUsPage

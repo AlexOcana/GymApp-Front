@@ -1,36 +1,34 @@
 import React, { useContext, useState } from 'react';
 import { Navbar, Nav, Container, Modal, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Login from "../../components_/LoginForm/LoginForm";
+import Login from "../../components/LoginForm/LoginForm";
 import SignUpForm from '../SignUpForm/SignUpForm';
 import { AuthContext } from '../../contexts/auth.context';
 
 const Navigation = () => {
 
-    const [showLoginModal, setShowLoginModal] = useState(false);
-    const [showSignupModal, setShowSignupModal] = useState(false);
+    const [modalData, setModalData] = useState({
+        show: false,
+        content: undefined
+    })
 
     const { logout } = useContext(AuthContext)
 
-    const handleLoginModalShow = () => {
-        setShowLoginModal(true);
 
+    const handleLoginModalShow = () => {
+        setModalData({ show: true, content: 'login' })
     };
-    const handleLoginModalClose = () => {
-        setShowLoginModal(false);
-    };
+
     const handleSignupModalShow = () => {
-        setShowSignupModal(true);
+        setModalData({ show: true, content: 'signup' })
     };
-    const handleSignupModalClose = () => {
-        setShowSignupModal(false);
-    };
+
     return (
         <div>
             <Navbar bg="dark" variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand>
-                        <Link className='nav-link' to={'/'}>App Name</Link>
+                        <Link className='nav-link' to={'/'}>{import.meta.env.VITE_APP_NAME}</Link>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -50,15 +48,14 @@ const Navigation = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <Modal show={showLoginModal} onHide={handleLoginModalClose}>
+            <Modal show={modalData.show} onHide={() => setModalData({ ...modalData, show: false })}>
                 <Modal.Body>
-                    <Login handleClose={handleLoginModalClose} />
-                </Modal.Body>
-            </Modal>
-
-            <Modal show={showSignupModal} onHide={handleSignupModalClose}>
-                <Modal.Body>
-                    <SignUpForm handleClose={handleSignupModalClose} />
+                    {
+                        modalData.content === 'login' && <Login handleClose={() => setModalData({ ...modalData, show: false })} />
+                    }
+                    {
+                        modalData.content === 'signup' && <SignUpForm handleClose={() => setModalData({ ...modalData, show: false })} />
+                    }
                 </Modal.Body>
             </Modal>
         </div>

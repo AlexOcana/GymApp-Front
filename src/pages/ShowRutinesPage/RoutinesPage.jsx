@@ -4,16 +4,36 @@ import { Link } from 'react-router-dom';
 import { Row } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card';
 import './Routines.css'
+import { ROUTINE_TYPES } from '../../consts/routine.consts';
 
-const Routines = () => {
-    Link
+const RoutinesPage = () => {
+
     return (
 
         <div className="Routines">
             <h2 >Select your Routine and Be a BEAST...!!!</h2>
             <Container>
                 <Row className='FirstRow'>
-                    <Col>
+                    {/* CREAR PAGINA UNIA DE RUTINAS CON EL TIPO COMO PARAM: /routines-list/:routine_type
+                    AQUÍ DEBAJO, RETORNAR UNA COL POR CADA TIPO DE RUTINA QUE ESTÁ EN CONSTS */}
+
+                    {
+                        ROUTINE_TYPES.map(elm => {
+                            return (
+                                <Col>
+                                    <Card className="custom-card">
+                                        <Link to={'/raw-routines'} className="image-button">
+                                            <Card.Img variant="top" src={`/routine-cover-${raw}.jpg`} alt="Card Image" />
+                                            <div className="overlay">
+                                                <span>{elm}</span>
+                                            </div>
+                                        </Link>
+                                    </Card>
+                                </Col>
+                            )
+                        })
+                    }
+                    {/* <Col>
                         <Card className="custom-card">
                             <Link to={'/raw-routines'} className="image-button">
                                 <Card.Img variant="top" src="/gym 2.jpg" alt="Card Image" />
@@ -43,10 +63,6 @@ const Routines = () => {
                             </Link>
                         </Card>
                     </Col>
-                </Row>
-
-
-                <Row>
                     <Col>
                         <Card className="custom-card">
                             <Link to={'/hit-routines'} className="image-button">
@@ -77,12 +93,13 @@ const Routines = () => {
                             </Link>
                         </Card>
                     </Col>
+                     */}
                 </Row>
             </Container >
         </div >
     )
 }
-export default Routines
+export default RoutinesPage
 
 
 

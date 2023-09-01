@@ -1,4 +1,4 @@
-// import VideoPlayer from '../../components_/VideoPlayer/VideoPlayer'
+// import VideoPlayer from '../../components/VideoPlayer/VideoPlayer'
 import './homepage.css'
 
 const HomePage = () => {
@@ -11,7 +11,7 @@ const HomePage = () => {
 
             </div>
 
-            {/* <h1>{import.meta.env.VITE_APP_NAME}</h1> */}
+            <h1>{import.meta.env.VITE_APP_NAME}</h1>
         </>
     )
 

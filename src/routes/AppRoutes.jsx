@@ -1,14 +1,12 @@
 import { Route, Routes } from "react-router-dom"
 import HomePage from "../pages/HomePage/HomePage"
-import AboutUs from "../pages/AboutUs_page/AboutUs"
-import Login from '../pages/Login_page/Login'
-import Signup from '../pages/Signup_page/Signup'
-import Exercises from '../pages/SearchExercices_page/Exercises'
-import Routines from "../pages/ShowRutines_page/Routines"
-import MyProfile from "../pages/MyProfile_page/MyProfile"
+import AboutUs from "../pages/AboutUsPage/AboutUsPage"
+import Exercises from '../pages/SearchExercicesPage/ExercisesPage'
+import Routines from "../pages/ShowRutinesPage/RoutinesPage"
+import MyProfile from "../pages/MyProfilePage/MyProfilePage"
 import PrivateRoute from "./PrivateRoutes"
 
-import CreateRoutine from "../pages/CreateRoutine_page/CreateRoutine"
+import CreateRoutine from "../pages/CreateRoutinePage/CreateRoutinePage"
 
 const AppRoutes = () => {
 
@@ -18,8 +16,6 @@ const AppRoutes = () => {
             <Route path={'/'} element={<HomePage />} />
             <Route path={'/aboutus'} element={<AboutUs />} />
             <Route path={'/exercises'} element={<Exercises />} />
-            <Route path={'/login'} element={<Login />} />
-            <Route path={'/signup'} element={<Signup />} />
 
 
             <Route element={<PrivateRoute />}>
