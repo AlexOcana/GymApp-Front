@@ -9,7 +9,19 @@ class ExerciseService {
                 'X-RapidAPI-Key': 'd4933db27fmshe2a635668f4aae5p150b73jsnaf2f8586368d',
                 'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
             }
-        };
+        }
+
+        this.api.interceptors.request.use((config) => {
+
+            const storedToken = localStorage.getItem("authToken");
+
+            if (storedToken) {
+                config.headers = { Authorization: `Bearer ${storedToken}` }
+            }
+
+            return config
+        })
+
     }
 
     searchExercises(searchTerm, setExerciseData, setError) {

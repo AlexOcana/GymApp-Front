@@ -8,7 +8,8 @@ const CreateRoutineForm = () => {
     const [routineData, setRoutineData] = useState({
         title: '',
         description: '',
-        training: ''
+        type: '',
+        owner: loggedUser
     })
 
     /*  const [inputList, setInputList] = useState([{
