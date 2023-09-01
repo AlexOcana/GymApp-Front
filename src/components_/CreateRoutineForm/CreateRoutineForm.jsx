@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { Form, Container, Button, Row, Col } from "react-bootstrap"
 import routinesService from "../../services/routines.services"
 
@@ -15,9 +15,6 @@ const CreateRoutineForm = () => {
         reps: 4
     }])
 
-    const [inputListRef, setInputListRef] = useRef([])
-
-
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
         setRoutineData({ ...routineData, [name]: value })
@@ -29,7 +26,7 @@ const CreateRoutineForm = () => {
         const list = [...inputList]
         list[index][name] = value
 
-        setInputList(list)
+        setInputList([...inputList], list)
     }
 
     const handleRemoveClick = index => {
@@ -40,14 +37,6 @@ const CreateRoutineForm = () => {
     }
 
     const handleAddClick = () => {
-
-        const newInput = {
-            exerciseId: '',
-            reps: 4
-        }
-
-        inputListRef.current.push(newInput)
-
         setInputList([...inputList, {
             exerciseId: '',
             reps: 4
