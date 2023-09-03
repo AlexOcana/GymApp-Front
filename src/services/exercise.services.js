@@ -11,17 +11,6 @@ class ExerciseService {
             }
         }
 
-        this.api.interceptors.request.use((config) => {
-
-            const storedToken = localStorage.getItem("authToken");
-
-            if (storedToken) {
-                config.headers = { Authorization: `Bearer ${storedToken}` }
-            }
-
-            return config
-        })
-
     }
 
     searchExercises(searchTerm, setExerciseData, setError) {
