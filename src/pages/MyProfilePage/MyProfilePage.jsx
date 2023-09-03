@@ -10,9 +10,6 @@ const MyProfilePage = () => {
 
         <Container>
 
-
-
-
         </Container>
 
     )
