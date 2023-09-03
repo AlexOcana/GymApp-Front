@@ -1,15 +1,30 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Form, Button, Row, Col, Card, } from "react-bootstrap"
-import routinesService from "../../services/routines.services"
 import * as Constants from './../../consts/routine.consts'
+import routinesService from "../../services/routines.services"
+import exercisesService from "../../services/exercise.services"
 
 const CreateRoutineForm = () => {
+
+    const [exercises, setExercises] = useState()
+
+    useEffect(() => {
+        loadExercises()
+    }, [])
+
+    console.log(exercises)
+
+    const loadExercises = () => {
+        exercisesService
+            .getExercise('biceps')
+            .then(({ data }) => setExercises(data))
+    }
 
     const [routineData, setRoutineData] = useState({
         title: '',
         description: '',
         type: '',
-        owner: loggedUser
+        owner: ''
     })
 
     /*  const [inputList, setInputList] = useState([{
@@ -27,17 +42,17 @@ const CreateRoutineForm = () => {
         const { name, value } = e.currentTarget
         const list = [...inputList]
         list[index][name] = value
-
+    
         setInputList([...inputList], list)
     }
-
+    
     const handleRemoveClick = index => {
         const list = [...inputList]
         list.splice(index, 1)
-
+    
         setInputList(list)
     }
-
+    
     const handleAddClick = () => {
         setInputList([...inputList, {
             exerciseId: '',
@@ -125,20 +140,18 @@ const CreateRoutineForm = () => {
             </Form>
 
             <Row>
-                <Col>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180" />
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                            <Button>Add to Routine</Button>
-                            <Button>Remove from Routine</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
+                {/* {exercises.map(elm => {
+                    <Col key={elm.id}>
+                        <Card style={{ width: '18rem' }}>
+                            <Card.Img variant="top" src={elm.gifUrl} />
+                            <Card.Body>
+                                <Card.Title>{elm.name}</Card.Title>
+                                <Button>Add to Routine</Button>
+                                <Button>Remove from Routine</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                })} */}
             </Row>
         </>
 

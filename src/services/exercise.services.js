@@ -1,15 +1,11 @@
-import axios from "axios";
+import axios from "axios"
 
 class ExerciseService {
+
     constructor() {
-        this.options = {
-            method: 'GET',
-            url: 'https://exercisedb.p.rapidapi.com/exercises',
-            headers: {
-                'X-RapidAPI-Key': 'd4933db27fmshe2a635668f4aae5p150b73jsnaf2f8586368d',
-                'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
-            }
-        }
+        this.api = axios.create({
+            baseURL: `${import.meta.env.VITE_API_URL}/exercises`
+        })
 
         this.api.interceptors.request.use((config) => {
 
@@ -21,22 +17,14 @@ class ExerciseService {
 
             return config
         })
-
     }
 
-    searchExercises(searchTerm, setExerciseData, setError) {
-        if (searchTerm) {
-            axios.request(this.options)
-                .then(response => {
-                    setExerciseData(response.data);
-                })
-                .catch(error => {
-                    setError(error);
-                });
-        } else {
-            setExerciseData([]);
-        }
+    getExercise(exercise) {
+        return this.api.get(`/${exercise}`)
     }
 }
 
-export default ExerciseService;
+
+const exercisesService = new ExerciseService()
+
+export default exercisesService
