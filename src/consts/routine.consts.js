@@ -32,3 +32,25 @@ export const ROUTINE_TYPES = [
         image: img6,
     },
 ];
+
+export const TARGET_MUSCLES = [
+    "abductors",
+    "abs",
+    "adductors",
+    "biceps",
+    "calves",
+    "cardiovascular system",
+    "delts",
+    "forearms",
+    "glutes",
+    "hamstrings",
+    "lats",
+    "levator scapulae",
+    "pectorals",
+    "quads",
+    "serratus anterior",
+    "spine",
+    "traps",
+    "triceps",
+    "upper back"
+]

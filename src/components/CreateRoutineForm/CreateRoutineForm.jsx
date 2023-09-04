@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Form, Button, Row, Col, Card, } from "react-bootstrap"
+import { Form, Button, Row, Col, Card } from "react-bootstrap"
 import * as Constants from './../../consts/routine.consts'
 import routinesService from "../../services/routines.services"
 import exercisesService from "../../services/exercise.services"
@@ -8,16 +8,23 @@ const CreateRoutineForm = () => {
 
     const [exercises, setExercises] = useState()
 
+    const [muscleGroup, setMuscleGroup] = useState({
+        muscle: ''
+    })
+
+    console.log(muscleGroup.muscle)
+
+
     useEffect(() => {
         loadExercises()
     }, [])
 
-    console.log(exercises)
 
     const loadExercises = () => {
         exercisesService
-            .getExercise('biceps')
+            .getExerciseByMuscle(muscleGroup)
             .then(({ data }) => setExercises(data))
+            .catch(err => console.log(err))
     }
 
     const [routineData, setRoutineData] = useState({
@@ -35,6 +42,11 @@ const CreateRoutineForm = () => {
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
         setRoutineData({ ...routineData, [name]: value })
+    }
+
+    const handleMuscleChange = e => {
+        const { value, name } = e.currentTarget
+        setMuscleGroup({ ...muscleGroup, [name]: value })
     }
 
 
@@ -64,8 +76,8 @@ const CreateRoutineForm = () => {
         e.preventDefault()
 
         routinesService
-            .saveRoutine({ routineData, inputList })
-            .then(({ data }) => console.log(data))
+            .saveRoutine({ routineData })
+            .then(console.log('done'))
             .catch(err => console.log(err))
     }
 
@@ -87,7 +99,16 @@ const CreateRoutineForm = () => {
                     <Form.Label>Type</Form.Label>
                     <Form.Select name="training" onChange={handleInputChange}>
                         {
-                            Constants.ROUTINE_TYPES.map(elm => <option key={elm} value={elm}>{elm}</option>)
+                            Constants.ROUTINE_TYPES.map(elm => <option key={elm.name} value={elm.name}>{elm.name}</option>)
+                        }
+                    </Form.Select>
+                </Form.Group>
+
+                <Form.Group>
+                    <Form.Label>Muscle Group</Form.Label>
+                    <Form.Select name="muscle" onChange={handleMuscleChange}>
+                        {
+                            Constants.TARGET_MUSCLES.map(elm => <option key={elm} value={elm}>{elm}</option>)
                         }
                     </Form.Select>
                 </Form.Group>

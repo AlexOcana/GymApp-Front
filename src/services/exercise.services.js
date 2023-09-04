@@ -4,7 +4,7 @@ class ExerciseService {
 
     constructor() {
         this.api = axios.create({
-            baseURL: `${import.meta.env.VITE_API_URL}/exercises`
+            baseURL: `${import.meta.env.VITE_API_URL}`
         })
 
         this.api.interceptors.request.use((config) => {
@@ -20,7 +20,11 @@ class ExerciseService {
     }
 
     getExercise(exercise) {
-        return this.api.get(`/${exercise}`)
+        return this.api.get(`/exercises/${exercise}`)
+    }
+
+    getExerciseByMuscle(muscle) {
+        return this.api.get(`/muscle/${muscle}`)
     }
 }
 
