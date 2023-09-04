@@ -13,7 +13,7 @@ const Navigation = () => {
     })
 
     const { loggedUser, logout } = useContext(AuthContext)
-
+    console.log(loggedUser)
 
     const handleLoginModalShow = () => {
         setModalData({ show: true, content: 'login' })
@@ -32,19 +32,15 @@ const Navigation = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        {loggedUser && (
-                            <Link to={'/exercises'} className='nav-link'>Exercises</Link>)}
+                        {/*   {loggedUser && (
+                            <Link to={'/exercises'} className='nav-link'>Exercises</Link>)} */}
 
                         <Link to={'/'} className='nav-link'>Home</Link>
-                        <Link to={'/exercises'} className='nav-link'>Exercises</Link>
-                        <Link to={'/routines'} className='nav-link'>Routines</Link>
-                        <Link to={'/newroutine'} className='nav-link'>Create Routine</Link>
-                        <Link to={'/community'} className='nav-link'>Community</Link>
-                        <Link to={'/nutrition'} className='nav-link'>Nutrition</Link>
                         <Link to={'/aboutus'} className='nav-link'>About Us</Link>
-                        <Link to={'#'} className='nav-link' onClick={handleLoginModalShow}>Login</Link>
-                        <Link to={'#'} className='nav-link' onClick={handleSignupModalShow}>Signup</Link>
-                        <Link to={'/myprofile'} className='nav-link'>My Profile</Link>ç
+
+                        {loggedUser && (
+                            <Link to={'/nutrition'} className='nav-link'>Nutrition</Link>
+                        )}
 
                         {loggedUser && (
                             <Link to={'/routines'} className='nav-link'>Routines</Link>
@@ -53,7 +49,6 @@ const Navigation = () => {
                             <Link to={'/newroutine'} className='nav-link'>Create Routine</Link>
                         )}
 
-                        <Link to={'/aboutus'} className='nav-link'>About Us</Link>
                         {loggedUser && (
                             <Link to={'/community'} className='nav-link'>Community</Link>
                         )}
@@ -72,7 +67,8 @@ const Navigation = () => {
                     <div className="d-flex" style={{ marginRight: '100px' }}>
                         <Link to={'/'} className='nav-link' style={{ marginTop: '8px', color: 'grey', marginRight: '10px' }} onClick={logout}>Log Out</Link>
                         <span className='navbar-text'>{loggedUser ? loggedUser.firstname : 'Not Logged'}</span>
-                        <img src={loggedUser.avatar} />
+                        {/* <img src={loggedUser.avatar} /> */}
+                        {console.log(loggedUser)}
                     </div>
                 </Navbar.Collapse>
             </Navbar>
