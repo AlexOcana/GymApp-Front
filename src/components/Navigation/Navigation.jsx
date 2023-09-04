@@ -46,7 +46,6 @@ const Navigation = () => {
                         <Link to={'/'} className='nav-link' style={{ marginTop: '8px', color: 'grey', marginRight: '10px' }} onClick={logout}>Log Out</Link>
                         <span className='navbar-text'>{loggedUser ? loggedUser.firstname : 'Not Logged'}</span>
                         {/* <img src={loggedUser.avatar} /> */}
-
                     </div>
                 </Navbar.Collapse>
             </Navbar>
