@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import userServices from "../../services/users.services";
 import { Link, useParams } from "react-router-dom";
 import { Row, Col, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { AuthContext } from '../../contexts/auth.context';
+
 
 const ProfileDetails = () => {
+    const { loggedUser, logout } = useContext(AuthContext)
 
     const { id } = useParams()
 
@@ -40,8 +43,12 @@ const ProfileDetails = () => {
                                     <ListGroup.Item>Profile: {user.role}</ListGroup.Item>
                                 </ListGroup>
                                 <Card.Body className="text-center">
-                                    <Link to={`/delete/${user._id}`} className="btn btn-danger mr-2">Delete Profile</Link>
-                                    <Link to={`/editProfile/${user._id}`} className="btn btn-warning">Edit my Profile</Link>
+                                    {loggedUser && loggedUser.role === 'ADMIN' && (
+                                        <>
+                                            <Link to={`/delete/${user._id}`} className="btn btn-danger mr-2">Delete Profile</Link>
+                                            <Link to={`/editProfile/${user._id}`} className="btn btn-warning">Edit my Profile</Link>
+                                        </>
+                                    )}
                                 </Card.Body>
                             </Card>
                             <ListGroup>
