@@ -1,57 +1,91 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import userServices from "../../services/users.services";
+import { Form, Button } from "react-bootstrap";
 
-const editProfile = () => {
 
-    const { id } = useParams()
+const EditProfile = () => {
 
-    const [user, setUser] = useState(null)
+    const { id } = useParams();
+
+    const navigate = useNavigate();
+
+    const [formData, setFormData] = useState({
+        firstname: "",
+        lastname: "",
+        avatar: "",
+    });
+
 
     useEffect(() => {
-        EditOneUser()
-    }, [])
+        loaderUser()
+    }, []);
 
-    const EditOneUser = () => {
+    const loaderUser = () => {
+
         userServices
-            .editUser(id)
-            .then(({ data }) => setUser(data))
-            .catch(err => console.log(err))
-    }
+            .getOneUser(id)
+            .then(({ data }) => setFormData(data))
+            .catch((err) => console.log(err));
 
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
+
+        e.preventDefault()
+
+        userServices
+            .editUser(id, formData)
+            .then(() => navigate(`/profile/${id}`))
+            .catch((err) => console.log(err));
+    };
+
+    const { firstname, lastname } = formData
 
     return (
-        <>
-            <Form onSubmit={handleFormSubmit}>
-                <Form.Group className="mb-3" controlId="firstname">
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control type="text" value={signupData.firstName} onChange={handleInputChange} name="firstname" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="lastname">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control type="text" value={signupData.lastName} onChange={handleInputChange} name="lastname" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="image">
-                    <Form.Label>Avatar</Form.Label>
-                    <Form.Control type="file" onChange={handleFileUpload} />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="email">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" value={signupData.email} onChange={handleInputChange} name="email" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" value={signupData.password} onChange={handleInputChange} name="password" />
-                </Form.Group>
-                <div className="d-grid">
-                    <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Uploading Image...' : 'Register'}</Button>
+        <div>
+            {!formData ? (
+                <p>Cargando...</p>
+            ) : (
+                <div>
+
+                    <h2>Edit My Profyle</h2>
+
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group controlId="firstname">
+                            <Form.Label>FirstName</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="firstname"
+                                value={firstname}
+                                onChange={handleInputChange}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="lastname">
+                            <Form.Label>LastName</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="lastname"
+                                value={lastname}
+                                onChange={handleInputChange}
+                            />
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Guardar cambios
+                        </Button>
+                        <Link to={`/profile/${id}`} className='nav-link'>Cancelar</Link>
+                    </Form>
+
                 </div>
-            </Form>
-        </>
+            )
+            }
+        </div >
     );
-}
+};
 
-export default editProfile
-
-
-
+export default EditProfile;
