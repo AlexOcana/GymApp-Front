@@ -4,13 +4,18 @@ import authService from "../../services/auth.services";
 import { useNavigate } from "react-router-dom";
 import uploadServices from "../../services/upload.services";
 
+
 function SignUpForm({ handleClose }) {
     const [signupData, setSignupData] = useState({
         firstname: '',
         lastname: '',
         email: '',
         password: '',
-        avatar: ''
+        avatar: '',
+        chest: '',
+        squad: '',
+        routine: '',
+        weigth: ''
     });
     const navigate = useNavigate();
     const [loadingImage, setLoadingImage] = useState(false)
@@ -54,6 +59,30 @@ function SignUpForm({ handleClose }) {
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control type="text" value={signupData.lastName} onChange={handleInputChange} name="lastname" />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="lastname">
+                <Form.Label>Your Weigth in Kgs: </Form.Label>
+                <Form.Control type="number" value={signupData.weigth} onChange={handleInputChange} name="weigth" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="chest">
+                <Form.Label>RM Kgs Chest Press: </Form.Label>
+                <Form.Control type="number" value={signupData.chest} onChange={handleInputChange} name="chest" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="chest">
+                <Form.Label>RM Kgs Squad Press: </Form.Label>
+                <Form.Control type="number" value={signupData.squad} onChange={handleInputChange} name="squad" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="routineType">
+                <Form.Label>Select a Routine Type: </Form.Label>
+                <Form.Control as="select" value={signupData.routine} onChange={handleInputChange} name="routine">
+                    <option value="RAW">RAW</option>
+                    <option value="STRENGTH">STRENGTH</option>
+                    <option value="FULLBODY">FULL BODY</option>
+                    <option value="HIT">HIT</option>
+                    <option value="ENDURANCE">ENDURANCE</option>
+                    <option value="CARDIO">CARDIO</option>
+                </Form.Control>
+            </Form.Group>
+
             <Form.Group className="mb-3" controlId="image">
                 <Form.Label>Avatar</Form.Label>
                 <Form.Control type="file" onChange={handleFileUpload} />
