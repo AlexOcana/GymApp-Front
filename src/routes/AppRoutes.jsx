@@ -8,6 +8,8 @@ import PrivateRoute from "./PrivateRoutes"
 import CommunityPage from "../pages/CommunityPage/CommunityPage"
 import CreateRoutine from "../pages/CreateRoutinePage/CreateRoutinePage"
 import ProfileDetails from "../pages/ProfileDetails/ProfileDetails"
+import EditProfile from "../pages/EditProfilePage/EditProfilePage"
+
 
 
 const AppRoutes = () => {
@@ -20,6 +22,7 @@ const AppRoutes = () => {
             <Route path={'/exercises'} element={<Exercises />} />
             <Route path={'/community'} element={<CommunityPage />} />
             <Route path={'/profile/:id'} element={<ProfileDetails />} />
+            <Route path={'/editProfile/:id'} element={<EditProfile />} />
 
 
 

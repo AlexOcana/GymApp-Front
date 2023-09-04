@@ -18,12 +18,12 @@ class UserServices {
         return this.api.get(`/getOneUser/${id}`)
     }
 
-    editUser(userData) {
-        return this.api.post(`/editUser/:id/edit`, userData)
+    editUser(id, userData) {
+        return this.api.post(`/editUser/${id}`, { userData })
     }
 
-    deleteUser() {
-        return this.api.post('/deleteUser/:id')
+    deleteUser(id) {
+        return this.api.post(`/deleteUser/${id}`)
     }
 
 }

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import userServices from "../../services/users.services";
-import { Link, useParams } from "react-router-dom";
-import { Row, Col, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Row, Col, Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
 
 const ProfileDetails = () => {
 
     const { id } = useParams()
+
+    const navigate = useNavigate()
 
     const [user, setUser] = useState(null);
 
@@ -18,6 +20,16 @@ const ProfileDetails = () => {
             .getOneUser(id)
             .then(({ data }) => setUser(data))
             .catch(err => console.log(err));
+    };
+
+    const handleSubmit = (e) => {
+
+        e.preventDefault()
+
+        userServices
+            .deleteUser(id)
+            .then(() => navigate('/community'))
+            .catch((err) => console.log(err));
     };
 
     return (
@@ -34,19 +46,21 @@ const ProfileDetails = () => {
                             </div>
                             <Card className="mt-3">
                                 <Card.Body>
-                                    <Card.Title className="text-center">{user.firstname} {user.lastname}</Card.Title>
+                                    <Card.Title className="text-center"><h2>{user.firstname} {user.lastname}</h2></Card.Title>
                                 </Card.Body>
                                 <ListGroup className="list-group-flush text-center">
                                     <ListGroup.Item>Profile: {user.role}</ListGroup.Item>
                                 </ListGroup>
-                                <Card.Body className="text-center">
-                                    <Link to={`/delete/${user._id}`} className="btn btn-danger mr-2">Delete Profile</Link>
+                                <Card.Body className="text-center d-flex">
+                                    <form onSubmit={handleSubmit}>
+                                        <Button type="submit" className="btn btn-danger mr-2">Delete Profile</Button>
+                                    </form>
                                     <Link to={`/editProfile/${user._id}`} className="btn btn-warning">Edit my Profile</Link>
                                 </Card.Body>
                             </Card>
                             <ListGroup>
                                 <ListGroupItem>
-                                    <p>Mis Rutinas</p>
+                                    <h4>Mis Rutinas</h4>
                                 </ListGroupItem>
                             </ListGroup>
                         </Col>
