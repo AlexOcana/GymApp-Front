@@ -9,7 +9,7 @@ import CommunityPage from "../pages/CommunityPage/CommunityPage"
 import CreateRoutine from "../pages/CreateRoutinePage/CreateRoutinePage"
 import ProfileDetails from "../pages/ProfileDetails/ProfileDetails"
 import EditProfile from "../pages/EditProfilePage/EditProfilePage"
-
+import NutricionalSuplements from "../pages/NutricionalSuplements/NutricionalSuplements"
 
 
 const AppRoutes = () => {
@@ -21,6 +21,7 @@ const AppRoutes = () => {
             <Route path={'/aboutus'} element={<AboutUs />} />
             <Route path={'/exercises'} element={<Exercises />} />
             <Route path={'/community'} element={<CommunityPage />} />
+            <Route path={'/Nutrition'} element={<NutricionalSuplements />} />
             <Route path={'/profile/:id'} element={<ProfileDetails />} />
             <Route path={'/editProfile/:id'} element={<EditProfile />} />
 

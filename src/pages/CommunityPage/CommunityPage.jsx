@@ -29,7 +29,7 @@ const CommunityPage = () => {
             ) : (
                 users.map((user) => {
                     return (
-                        <Row className="mt-4 mb-3">
+                        <Row key={user._id} className="mt-4 mb-3">
                             <Col md={4}>
                                 <Card.Img
                                     src={user.avatar}
