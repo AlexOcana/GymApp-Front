@@ -14,7 +14,7 @@ const RoutinesPage = () => {
             <Container>
                 <Row className='FirstRow'>
                     {ROUTINE_TYPES.map((elm, idx) => (
-                        <Col key={elm}>
+                        <Col key={`${elm.name}-${idx}`} className="col-md-4 mb-4">
                             <Card className="custom-card">
                                 <Link to={`/routines/${elm.name}`} className="image-button">
                                     <Card.Img variant="top" src={elm.image} alt="Card Image" />

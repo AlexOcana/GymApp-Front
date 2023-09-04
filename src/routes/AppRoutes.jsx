@@ -5,8 +5,9 @@ import Exercises from '../pages/SearchExercicesPage/ExercisesPage'
 import Routines from "../pages/ShowRutinesPage/RoutinesPage"
 import MyProfile from "../pages/MyProfilePage/MyProfilePage"
 import PrivateRoute from "./PrivateRoutes"
-
+import CommunityPage from "../pages/CommunityPage/CommunityPage"
 import CreateRoutine from "../pages/CreateRoutinePage/CreateRoutinePage"
+
 
 const AppRoutes = () => {
 
@@ -16,6 +17,9 @@ const AppRoutes = () => {
             <Route path={'/'} element={<HomePage />} />
             <Route path={'/aboutus'} element={<AboutUs />} />
             <Route path={'/exercises'} element={<Exercises />} />
+            <Route path={'/community'} element={<CommunityPage />} />
+            {/* <Route path={'/profile'} element={<ProfilePage />} /> */}
+
 
 
             <Route element={<PrivateRoute />}>

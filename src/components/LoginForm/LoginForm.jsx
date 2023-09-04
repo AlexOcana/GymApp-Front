@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth.context";
 import authService from "../../services/auth.services";
 
+
 function LoginForm({ handleClose }) {
     const [loginData, setLoginData] = useState({
         email: "",
@@ -12,21 +13,22 @@ function LoginForm({ handleClose }) {
 
     const navigate = useNavigate();
 
-    const { authenticateUser, storeToken } = useContext(AuthContext);
+    const { loggedUser, authenticateUser } = useContext(AuthContext)
 
-    const handleInputChange = (e) => {
+
+    const handleInputChange = e => {
         const { value, name } = e.target;
         setLoginData({ ...loginData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault();
+
         authService
             .login(loginData)
             .then(({ data }) => {
-                console.log("Login response data:", data);
-                storeToken(data.authToken);
-                authenticateUser();
+                localStorage.setItem('authToken', data.authToken)
+                authenticateUser()
                 handleClose();
                 navigate("/");
             })

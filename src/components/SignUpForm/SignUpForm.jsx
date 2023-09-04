@@ -32,6 +32,7 @@ function SignUpForm({ handleClose }) {
         setLoadingImage(true)
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])
+
         uploadServices
             .uploadimage(formData)
             .then(({ data }) => {

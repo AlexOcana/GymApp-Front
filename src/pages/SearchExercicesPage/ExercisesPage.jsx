@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/Searchbar/Searchbar";
-import ListGroup from 'react-bootstrap/ListGroup';
 import ExerciseService from '../../services/exercise.services'
 import Card from 'react-bootstrap/Card';
 import { Row, Col, Container } from 'react-bootstrap'
