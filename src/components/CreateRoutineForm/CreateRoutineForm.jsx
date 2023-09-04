@@ -8,16 +8,14 @@ const CreateRoutineForm = () => {
 
     const [exercises, setExercises] = useState()
 
-    const [muscleGroup, setMuscleGroup] = useState({
-        muscle: ''
-    })
+    const [muscleGroup, setMuscleGroup] = useState(null)
 
-    console.log(muscleGroup.muscle)
+    const [clicked, setClicked] = useState(false)
 
 
     useEffect(() => {
-        loadExercises()
-    }, [])
+        muscleGroup && loadExercises()
+    }, [muscleGroup])
 
 
     const loadExercises = () => {
@@ -45,8 +43,7 @@ const CreateRoutineForm = () => {
     }
 
     const handleMuscleChange = e => {
-        const { value, name } = e.currentTarget
-        setMuscleGroup({ ...muscleGroup, [name]: value })
+        setMuscleGroup(e.currentTarget.value)
     }
 
 
@@ -161,18 +158,26 @@ const CreateRoutineForm = () => {
             </Form>
 
             <Row>
-                {/* {exercises.map(elm => {
-                    <Col key={elm.id}>
-                        <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src={elm.gifUrl} />
-                            <Card.Body>
-                                <Card.Title>{elm.name}</Card.Title>
-                                <Button>Add to Routine</Button>
-                                <Button>Remove from Routine</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                })} */}
+
+                {
+                    exercises ?
+
+                        exercises.map(elm => {
+                            return (
+                                <Col key={elm.id}>
+                                    <Card>
+                                        <Card.Img variant="top" src={elm.gifUrl} />
+                                        <Card.Body>
+                                            <Card.Title>{elm.bodyPart}</Card.Title>
+                                            {/* <Button onClick={handleAddClick}>Add to Routine</Button>
+                                            <Button onClick={handleRemoveClick}>Remove from Routine</Button> */}
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            )
+
+                        }) : <h1>Loading...</h1>
+                }
             </Row>
         </>
 
