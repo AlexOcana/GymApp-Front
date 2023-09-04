@@ -10,9 +10,6 @@ const CreateRoutineForm = () => {
 
     const [muscleGroup, setMuscleGroup] = useState(null)
 
-    const [clicked, setClicked] = useState(false)
-
-
     useEffect(() => {
         muscleGroup && loadExercises()
     }, [muscleGroup])
@@ -32,10 +29,8 @@ const CreateRoutineForm = () => {
         owner: ''
     })
 
-    /*  const [inputList, setInputList] = useState([{
-         exerciseId: '',
-         reps: 4
-     }]) */
+
+    const [inputList, setInputList] = useState({})
 
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
@@ -46,34 +41,30 @@ const CreateRoutineForm = () => {
         setMuscleGroup(e.currentTarget.value)
     }
 
-
-    /* const handleExerciseInputChange = (e, index) => {
+    const handleExerciseInputChange = (id, e) => {
         const { name, value } = e.currentTarget
-        const list = [...inputList]
-        list[index][name] = value
-    
-        setInputList([...inputList], list)
+        const updatedList = { [name]: value }
+        inputList[id] = updatedList
+
+        setInputList({ ...inputList })
     }
-    
-    const handleRemoveClick = index => {
-        const list = [...inputList]
-        list.splice(index, 1)
-    
-        setInputList(list)
+
+    const handleRemoveClick = (id, e) => {
+
     }
-    
-    const handleAddClick = () => {
+
+    const handleAddClick = (id, e) => {
         setInputList([...inputList, {
-            exerciseId: '',
-            reps: 4
+            exerciseId: id,
+            reps: e.currentTarget.value
         }])
-    } */
+    }
 
     const handleRoutineSubmit = e => {
         e.preventDefault()
 
         routinesService
-            .saveRoutine({ routineData })
+            .saveRoutine({ routineData, inputList })
             .then(console.log('done'))
             .catch(err => console.log(err))
     }
@@ -81,7 +72,6 @@ const CreateRoutineForm = () => {
     return (
 
         <>
-
             <Form onSubmit={handleRoutineSubmit}>
 
                 <Form.Group>
@@ -110,47 +100,6 @@ const CreateRoutineForm = () => {
                     </Form.Select>
                 </Form.Group>
 
-                {/* TODO II: DESACOPLAR LÓGICAS DE INPUTS */}
-
-                {/* {
-                    inputList.map((x, i) => {
-                        return (
-                            <div key={i}>
-                                {inputList[i].reps > 15 && (inputList[i].reps = 15)}
-                                {inputList[i].reps < 4 && (inputList[i].reps = 4)}
-                                <Row>
-                                    <Col>
-                                        <Form.Group>
-                                            <Form.Label>Select Muscle Group</Form.Label>
-                                            <Form.Select name="muscle" onChange={e => handleExerciseInputChange(e, i)}>
-                                                <option value={x.muscle}>Biceps</option>
-                                            </Form.Select>
-                                        </Form.Group>
-                                    </Col>
-                                    <Col>
-                                        <Form.Group>
-                                            <Form.Label>Search Exercise</Form.Label>
-                                            <Form.Control value={x.exerciseId} type="text" name="exercise" onChange={e => handleExerciseInputChange(e, i)} />
-                                        </Form.Group>
-                                    </Col>
-                                    <Col>
-                                        <Form.Group>
-                                            <Form.Label>Reps</Form.Label>
-                                            <Form.Control value={x.reps} type="number" name="reps" onChange={e => handleExerciseInputChange(e, i)} />
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
-
-                                <div className="d-grid mt-3">
-                                    {inputList.length !== 1 && <Button variant="danger" onClick={() => handleRemoveClick(i)}>Remove</Button>}
-                                    {inputList.length - 1 === i && <Button className="mt-3" onClick={() => handleAddClick(i)}>Add</Button>}
-                                </div>
-
-                            </div>
-                        )
-                    })
-                } */}
-
                 <div className="d-grid mt-3">
                     <Button variant="dark" type="submit">Create New Routine</Button>
                 </div>
@@ -168,9 +117,13 @@ const CreateRoutineForm = () => {
                                     <Card>
                                         <Card.Img variant="top" src={elm.gifUrl} />
                                         <Card.Body>
-                                            <Card.Title>{elm.bodyPart}</Card.Title>
-                                            {/* <Button onClick={handleAddClick}>Add to Routine</Button>
-                                            <Button onClick={handleRemoveClick}>Remove from Routine</Button> */}
+                                            <Card.Title>{elm.name}</Card.Title>
+                                            <Form.Group>
+                                                <Form.Label>Reps</Form.Label>
+                                                <Form.Control value={inputList.id} type="number" name="reps" onChange={e => handleExerciseInputChange(elm.id, e)} />
+                                            </Form.Group>
+                                            <Button onClick={e => handleAddClick(elm.id, e)}>Add to Routine</Button>
+                                            <Button onClick={e => handleRemoveClick(elm.id, e)}>Remove from Routine</Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>
