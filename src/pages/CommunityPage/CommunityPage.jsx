@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
 import userServices from "../../services/users.services"
 import { Col, Card, ListGroup, Row, Container } from "react-bootstrap"
+import { Link } from "react-router-dom"
+
 
 
 
 const CommunityPage = () => {
 
     const [users, setUsers] = useState()
-
-    console.log(users)
 
     useEffect(() => {
         loadUsers()
@@ -24,38 +24,44 @@ const CommunityPage = () => {
 
     return (
         <Container className="mt-3">
-            {
-                !users
-                    ?
-                    <p>Cojones...</p>
-                    :
-                    users.map(user => {
-
-                        return (
-                            <Row className="mt-4 mb-3">
-                                <Card.Img variant="top" src={user.avatar} style={{ maxWidth: '250px' }} />
-                                <Col>
-                                    <Card key={user._id}>
-                                        <Card.Body>
-                                            <Card.Title>{user.firstname} {user.lastname}</Card.Title>
-
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
+            {!users ? (
+                <p>Cojones...</p>
+            ) : (
+                users.map((user) => {
+                    return (
+                        <Row className="mt-4 mb-3">
+                            <Col md={4}>
+                                <Card.Img
+                                    src={user.avatar}
+                                    style={{ maxWidth: '300px' }}
+                                />
+                            </Col>
+                            <Col md={8}>
+                                <Card key={user._id} className="justify-content-between">
+                                    <Card.Body>
+                                        <Card.Title className="text-center">
+                                            {user.firstname} {user.lastname}
+                                        </Card.Title>
+                                        <ListGroup className="list-group-flush text-center">
                                             <ListGroup.Item>Profile: {user.role}</ListGroup.Item>
-
                                         </ListGroup>
-                                        <Card.Body className="d-flex align-items-rigth">
-                                            <Card.Link href="/profile">See Profile</Card.Link>
-                                            <Card.Link href="#">Add Gym Bro</Card.Link>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            </Row>
-                        )
-                    }
-                    )
-            }
+                                    </Card.Body>
+                                    <Card.Body className="d-flex justify-content-center align-items-center flex-column">
+                                        <Link to={`/profile/${user._id}`} className="btn btn-primary">
+                                            See Profile
+                                        </Link>
+                                        <Link to="#" className="btn btn-secondary mt-2">
+                                            Add Gym Bro
+                                        </Link>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
+                    );
+                })
+            )}
         </Container>
+
 
     )
 }

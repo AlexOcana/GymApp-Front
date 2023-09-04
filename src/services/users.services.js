@@ -14,8 +14,8 @@ class UserServices {
         return this.api.get('/getAllUsers')
     }
 
-    getOneUser() {
-        return this.api.get('/getOneUser/:id')
+    getOneUser(id) {
+        return this.api.get(`/getOneUser/${id}`)
     }
 
     editUser(userData) {

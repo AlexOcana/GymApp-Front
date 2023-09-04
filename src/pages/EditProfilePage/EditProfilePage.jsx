@@ -1,6 +1,24 @@
-import { Container } from "react-bootstrap";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import userServices from "../../services/users.services";
 
 const editProfile = () => {
+
+    const { id } = useParams()
+
+    const [user, setUser] = useState(null)
+
+    useEffect(() => {
+        EditOneUser()
+    }, [])
+
+    const EditOneUser = () => {
+        userServices
+            .editUser(id)
+            .then(({ data }) => setUser(data))
+            .catch(err => console.log(err))
+    }
+
 
     return (
         <>
