@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Login from "../../components/LoginForm/LoginForm";
 import SignUpForm from '../SignUpForm/SignUpForm';
 import { AuthContext } from '../../contexts/auth.context';
+import "./Navigation.css"
 
 const Navigation = () => {
 
@@ -13,7 +14,7 @@ const Navigation = () => {
     })
 
     const { loggedUser, logout } = useContext(AuthContext)
-
+    console.log("usuario logeado", loggedUser)
 
     const handleLoginModalShow = () => {
         setModalData({ show: true, content: 'login' })
@@ -32,27 +33,23 @@ const Navigation = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        {loggedUser && (
-                            <Link to={'/exercises'} className='nav-link'>Exercises</Link>)}
+                        {/*   {loggedUser && (
+                            <Link to={'/exercises'} className='nav-link'>Exercises</Link>)} */}
 
                         <Link to={'/'} className='nav-link'>Home</Link>
                         <Link to={'/aboutus'} className='nav-link'>About Us</Link>
 
                         {loggedUser && (
-                            <Link to={'/nutrition'} className='nav-link'>Nutrition</Link>
+                            <>
+                                <Link to={'/nutrition'} className='nav-link'>Nutrition</Link>
+                                <Link to={'/routines'} className='nav-link'>Routines</Link>
+                                <Link to={'/newroutine'} className='nav-link'>Create Routine</Link>
+                                <Link to={'/community'} className='nav-link'>Community</Link>
+                            </>
+
                         )}
 
-                        {loggedUser && (
-                            <Link to={'/routines'} className='nav-link'>Routines</Link>
-                        )}
-                        {loggedUser && (
-                            <Link to={'/newroutine'} className='nav-link'>Create Routine</Link>
-                        )}
 
-
-                        {loggedUser && (
-                            <Link to={'/community'} className='nav-link'>Community</Link>
-                        )}
                         {!loggedUser && (
                             <>
                                 <Link to={'#'} className='nav-link' onClick={handleLoginModalShow}>Login</Link>
@@ -60,18 +57,26 @@ const Navigation = () => {
                             </>
 
                         )}
-                        {loggedUser && (
-                            <Link to={'/myprofile'} className='nav-link'>My Profile</Link>
-                        )}
+
 
                     </Nav>
-                    <div className="d-flex" style={{ marginRight: '100px' }}>
+
+                    <div className="d-flex profile-user" style={{ marginRight: '100px' }}>
                         <Link to={'/'} className='nav-link' style={{ marginTop: '8px', color: 'grey', marginRight: '10px' }} onClick={logout}>Log Out</Link>
                         <span className='navbar-text'>{loggedUser ? loggedUser.firstname : 'Not Logged'}</span>
-                        {/* <img src={loggedUser.avatar} /> */}
+
+                        {loggedUser &&
+
+                            <Link to="/myprofile" className="nav-link image-zoom">
+                                <img src={loggedUser?.avatar} alt="Avatar" className="rounded-circle" />
+                            </Link>
+                        }
+
                     </div>
+
                 </Navbar.Collapse>
             </Navbar>
+
             <Modal show={modalData.show} onHide={() => setModalData({ ...modalData, show: false })}>
                 <Modal.Body>
                     {
