@@ -26,7 +26,7 @@ const MyProfile = () => {
 
         <Container className='mt-5'>
             <Row className="d-flex justify-content-center align-items-center">
-                <h1>My Profile: @{loggedUser.firstname}</h1>
+                <h1>My Profile: @{loggedUser.firstname} {loggedUser.lastname}</h1>
                 <Col className="text-center mt-3">
                     <Card.Body>
 
@@ -40,20 +40,19 @@ const MyProfile = () => {
 
                     <h2>GymBro Details...</h2>
                     <Card>
-
-                        <Card.Title className='text-center'>
-                            <h3>Name: {loggedUser.firstname}</h3>
-                            <h3>Last Name: {loggedUser.lastname}</h3>
-                            <h5>Favourite routines: {loggedUser.routine} </h5>
-                            <h5>Best Chest Rm: {loggedUser.chest} </h5>
-                            <h5>Best Squad Press Rm:{loggedUser.squad} </h5>
-                            <h5>Actual Weight:{loggedUser.weigth} </h5>
-
+                        <Card.Title className='text-center mt-4'>
+                            <h5> Favourite routines: {loggedUser.routine}</h5>
+                            <h5> Best Chest Rm: {loggedUser.chest} kg </h5>
+                            <h5> Best Squad Press Rm: {loggedUser.squad} kg </h5>
+                            <h5> Actual Weight: {loggedUser.weigth} kg </h5>
                         </Card.Title>
-                        <Link to={`/editProfile/${loggedUser._id}`} className="btn btn-warning">Edit my Profile</Link>
-                        <form onSubmit={handleSubmit}>
-                            <Button type="submit" className="btn btn-danger mr-2">Delete Profile</Button>
-                        </form>
+                        <div className="button-container d-flex justify-content-center mt-3 mb-2">
+                            <Link to={`/editProfile/${loggedUser._id}`} className="btn btn-warning">Edit my Profile</Link>
+                            {/* TODO: ELIMINAR FORMS */}
+                            <form onSubmit={handleSubmit}>
+                                <Button type="submit" className="btn btn-danger">Delete Profile</Button>
+                            </form>
+                        </div>
                     </Card>
 
                 </Col>
