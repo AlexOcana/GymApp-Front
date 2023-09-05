@@ -36,15 +36,11 @@ const Navigation = () => {
                             <Link to={'/exercises'} className='nav-link'>Exercises</Link>)}
 
                         <Link to={'/'} className='nav-link'>Home</Link>
-                        <Link to={'/exercises'} className='nav-link'>Exercises</Link>
-                        <Link to={'/routines'} className='nav-link'>Routines</Link>
-                        <Link to={'/newroutine'} className='nav-link'>Create Routine</Link>
-                        <Link to={'/community'} className='nav-link'>Community</Link>
-                        <Link to={'/nutrition'} className='nav-link'>Nutrition</Link>
                         <Link to={'/aboutus'} className='nav-link'>About Us</Link>
-                        <Link to={'#'} className='nav-link' onClick={handleLoginModalShow}>Login</Link>
-                        <Link to={'#'} className='nav-link' onClick={handleSignupModalShow}>Signup</Link>
-                        <Link to={'/myprofile'} className='nav-link'>My Profile</Link>ç
+
+                        {loggedUser && (
+                            <Link to={'/nutrition'} className='nav-link'>Nutrition</Link>
+                        )}
 
                         {loggedUser && (
                             <Link to={'/routines'} className='nav-link'>Routines</Link>
@@ -53,7 +49,7 @@ const Navigation = () => {
                             <Link to={'/newroutine'} className='nav-link'>Create Routine</Link>
                         )}
 
-                        <Link to={'/aboutus'} className='nav-link'>About Us</Link>
+
                         {loggedUser && (
                             <Link to={'/community'} className='nav-link'>Community</Link>
                         )}
