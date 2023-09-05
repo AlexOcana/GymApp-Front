@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import userServices from "../../services/users.services";
 import { Form, Button, Row, Col } from "react-bootstrap";
@@ -21,16 +21,15 @@ const EditProfileForm = () => {
 
 
     useEffect(() => {
-        loaderUser()
+        loadUser()
     }, []);
 
-    const loaderUser = () => {
+    const loadUser = () => {
 
         userServices
             .getOneUser(id)
             .then(({ data }) => setFormData(data))
             .catch((err) => console.log(err));
-
     };
 
     const handleInputChange = (e) => {
@@ -63,10 +62,6 @@ const EditProfileForm = () => {
                 console.log(err)
                 setLoadingImage(false)
             })
-
-
-
-        const { firstname, lastname, weigth, chest, squad, routine, email, avatar } = formData
     }
 
     return (

@@ -4,9 +4,6 @@ import { Col, Card, ListGroup, Row, Container } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import './CommunityPage.css'
 
-
-
-
 const CommunityPage = () => {
 
     const [users, setUsers] = useState()
@@ -15,7 +12,6 @@ const CommunityPage = () => {
         loadUsers()
     }, [])
 
-    userServices
     const loadUsers = () => {
         userServices
             .getAllUsers()

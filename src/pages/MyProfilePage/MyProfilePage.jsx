@@ -48,6 +48,7 @@ const MyProfile = () => {
                         </Card.Title>
                         <div className="button-container d-flex justify-content-center mt-3 mb-2">
                             <Link to={`/editProfile/${loggedUser._id}`} className="btn btn-warning">Edit my Profile</Link>
+                            {/* TODO: ELIMINAR FORMS */}
                             <form onSubmit={handleSubmit}>
                                 <Button type="submit" className="btn btn-danger">Delete Profile</Button>
                             </form>

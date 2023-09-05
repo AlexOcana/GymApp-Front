@@ -7,13 +7,11 @@ import exercisesService from "../../services/exercise.services"
 const CreateRoutineForm = () => {
 
     const [exercises, setExercises] = useState()
-
     const [muscleGroup, setMuscleGroup] = useState(null)
 
     useEffect(() => {
         muscleGroup && loadExercises()
     }, [muscleGroup])
-
 
     const loadExercises = () => {
         exercisesService
