@@ -1,0 +1,17 @@
+.avatar-img {
+
+    width: 350px;
+    height: 220px;
+    border-radius: 10%;
+
+}
+
+.user-details {
+
+    margin-right: 100px;
+}
+
+.buttons-edit {
+
+    margin-right: 10px;
+}

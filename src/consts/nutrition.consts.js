@@ -16,17 +16,17 @@ import product13 from '../assets/productos/13.jpg'
 
 export const PRODUCT_TYPES = [
     {
-        name: 'ISO WHEY ZERO',
-        brand: 'GERMAN THE BEAST',
+        name: 'ISA IAS PROTEIN',
+        brand: 'VILLAGE GYMBRO',
         image: product1,
     },
     {
-        name: 'CHOCO MONKEY WHEY PROTEIN',
+        name: 'CHOCO CHOCO MIAU MIAU PROTEIN',
         brand: 'I LIFE 4 GYM',
         image: product2,
     },
     {
-        name: '100% WHEY PROTEIN',
+        name: '100% DEVELOPER PROTEIN',
         brand: '247 GYM',
 
         image: product3,

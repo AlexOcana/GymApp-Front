@@ -66,17 +66,17 @@ function SignUpForm({ handleClose }) {
                 <Col>
                     <Form.Group className="mb-3" controlId="lastname">
                         <Form.Label>Your Weigth in Kgs: </Form.Label>
-                        <Form.Control type="number" value={signupData.weigth} onChange={handleInputChange} name="weigth" />
+                        <Form.Control type="number" value={signupData.weigth} onChange={handleInputChange} name="weigth" placeholder="kg" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="chest">
                         <Form.Label>RM Kgs Chest Press: </Form.Label>
-                        <Form.Control type="number" value={signupData.chest} onChange={handleInputChange} name="chest" />
+                        <Form.Control type="number" value={signupData.chest} onChange={handleInputChange} name="chest" placeholder="kg" />
                     </Form.Group>
                 </Col>
 
                 <Form.Group className="mb-3" controlId="chest">
                     <Form.Label>RM Kgs Squad Press: </Form.Label>
-                    <Form.Control type="number" value={signupData.squad} onChange={handleInputChange} name="squad" />
+                    <Form.Control type="number" value={signupData.squad} onChange={handleInputChange} name="squad" placeholder="kg" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="routineType">
@@ -90,8 +90,6 @@ function SignUpForm({ handleClose }) {
                         <option value="CARDIO">CARDIO</option>
                     </Form.Control>
                 </Form.Group>
-
-
                 <Form.Group className="mb-3" controlId="image">
                     <Form.Label>Avatar</Form.Label>
                     <Form.Control type="file" onChange={handleFileUpload} />

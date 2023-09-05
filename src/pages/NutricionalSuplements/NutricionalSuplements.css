@@ -1,0 +1,11 @@
+.protein-name {
+
+    text-align: left;
+}
+
+.product-image {
+
+    width: 180px;
+    height: 200px;
+    align-items: center;
+}

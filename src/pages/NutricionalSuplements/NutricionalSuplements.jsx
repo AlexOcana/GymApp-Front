@@ -2,6 +2,7 @@
 import { Col, Container, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { Row, Button } from 'react-bootstrap'
 import { PRODUCT_TYPES } from '../../consts/nutrition.consts'
+import './NutricionalSuplements.css'
 
 
 const NutricionalSuplements = () => {
@@ -11,14 +12,14 @@ const NutricionalSuplements = () => {
             {PRODUCT_TYPES.map((elm, idx) => (
                 <Row key={idx} className='mt-5'>
                     <Col sm={2}>
-                        <img src={elm.image} alt={elm.name} style={{ maxWidth: '150px' }} />
+                        <img className='product-image' src={elm.image} alt={elm.name} />
                     </Col>
                     <Col sm={10}>
                         <ListGroup>
-                            <h2 className='text-left'>{elm.name}</h2>
+                            <h2 className='protein-name'>{elm.name}</h2>
                             <ListGroup.Item>
                                 <p><strong>Brand:</strong> {elm.brand}</p>
-                                <Button variant="warning">Añadir al carrito</Button>
+                                <Button variant="warning">Add to my cart</Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Col>
