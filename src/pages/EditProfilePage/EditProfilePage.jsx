@@ -1,7 +1,17 @@
+import { Container } from "react-bootstrap"
+import EditProfileForm from "../../components/EditUserForm/EditUserForm"
 
-const EditProfile = () => {
+const EditProfileUser = () => {
 
     return (
-        <h1>Pagina de editar el perfil</h1>
+        <div className="d-flex justify-content-center">
+            <Container>
+                <h1>Edit your profile...</h1>
+                <EditProfileForm />
+            </Container >
+        </div >
     )
+
 }
+
+export default EditProfileUser

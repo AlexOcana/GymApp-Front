@@ -2,33 +2,29 @@ import { useEffect, useState } from "react";
 import userServices from "../../services/users.services";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Row, Col, Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
+import { AuthContext } from '../../contexts/auth.context';
 
 const ProfileDetails = () => {
 
+    const { loggedUser } = useContext(AuthContext);
+
     const { id } = useParams()
-
-    console.log(id)
-
     const navigate = useNavigate()
-
     const [user, setUser] = useState(null)
 
-
     useEffect(() => {
-        UserDetails();
+        getUserDetails();
     }, []);
-    const UserDetails = () => {
+
+    const getUserDetails = () => {
         userServices
             .getOneUser(id)
             .then(({ data }) => setUser(data))
-
             .catch(err => console.log(err));
     };
 
-    const handleSubmit = (e) => {
-
+    const handleUserDetele = (e) => {
         e.preventDefault()
-
         userServices
             .deleteUser(id)
             .then(() => navigate('/community'))
@@ -52,12 +48,13 @@ const ProfileDetails = () => {
                                 <ListGroup className="list-group-flush text-center">
                                     <ListGroup.Item>Profile: {user.role}</ListGroup.Item>
                                 </ListGroup>
-                                <Card.Body className="text-center d-flex">
-                                    <form onSubmit={handleSubmit}>
-                                        <Button type="submit" className="btn btn-danger mr-2">Delete Profile</Button>
-                                    </form>
-                                    <Link to={`/editProfile/${user._id}`} className="btn btn-warning">Edit my Profile</Link>
-                                </Card.Body>
+
+                                {loggedUser && loggedUser.role === 'ADMIN' && (
+                                    <Card.Body className="text-center d-flex">
+                                        <Button onClick={handleUserDetele} className="btn btn-danger mr-2">Delete Profile</Button>
+                                        <Link to={`/editProfile/${user._id}`} className="btn btn-warning">Edit my Profile</Link>
+                                    </Card.Body>
+                                )}
                             </Card>
                             <ListGroup>
                                 <ListGroupItem>
