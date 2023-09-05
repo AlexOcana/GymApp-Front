@@ -25,7 +25,7 @@ const CreateRoutineForm = () => {
     const [routineData, setRoutineData] = useState({
         title: '',
         description: '',
-        type: '',
+        training: '',
         owner: ''
     })
 
@@ -50,14 +50,19 @@ const CreateRoutineForm = () => {
     }
 
     const handleRemoveClick = (id, e) => {
+        const { name, value } = e.Target
 
+        const updatedList = { [name]: value }
+        inputList[id] = updatedList
+
+        setInputList({ ...inputList })
     }
 
     const handleAddClick = (id, e) => {
-        setInputList([...inputList, {
-            exerciseId: id,
-            reps: e.currentTarget.value
-        }])
+        const reps = e.target.value
+        console.log('repsValue:--------------->', e.target.value)
+        const updatedInputList = { ...inputList, [id]: { reps } }
+        setInputList(updatedInputList)
     }
 
     const handleRoutineSubmit = e => {
@@ -111,19 +116,19 @@ const CreateRoutineForm = () => {
                 {
                     exercises ?
 
-                        exercises.map(elm => {
+                        exercises.map(({ bodyPart, equipment, gifUrl, id, name, target }) => {
                             return (
-                                <Col key={elm.id}>
+                                <Col key={id}>
                                     <Card>
-                                        <Card.Img variant="top" src={elm.gifUrl} />
+                                        <Card.Img variant="top" src={gifUrl} />
                                         <Card.Body>
-                                            <Card.Title>{elm.name}</Card.Title>
+                                            <Card.Title>{name}</Card.Title>
                                             <Form.Group>
                                                 <Form.Label>Reps</Form.Label>
-                                                <Form.Control value={inputList.id} type="number" name="reps" onChange={e => handleExerciseInputChange(elm.id, e)} />
+                                                <Form.Control value={inputList.id} type="number" name="reps" onChange={e => handleExerciseInputChange(id, e)} />
+                                                <Button onClick={e => handleAddClick(id, e)}>Add to Routine</Button>
+                                                <Button onClick={e => handleRemoveClick(id, e)}>Remove from Routine</Button>
                                             </Form.Group>
-                                            <Button onClick={e => handleAddClick(elm.id, e)}>Add to Routine</Button>
-                                            <Button onClick={e => handleRemoveClick(elm.id, e)}>Remove from Routine</Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>
