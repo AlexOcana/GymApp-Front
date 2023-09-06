@@ -14,7 +14,6 @@ const Navigation = () => {
     })
 
     const { loggedUser, logout } = useContext(AuthContext)
-    console.log("usuario logeado", loggedUser)
 
     const handleLoginModalShow = () => {
         setModalData({ show: true, content: 'login' })
@@ -25,7 +24,7 @@ const Navigation = () => {
     };
 
     return (
-        <div>
+        <div className='NavBar'>
             <Navbar bg="dark" variant="dark" expand="lg">
                 <Navbar.Brand>
                     <Link className='nav-link' to={'/'} style={{ marginLeft: '20px' }}>{import.meta.env.VITE_APP_NAME}</Link>
@@ -37,7 +36,6 @@ const Navigation = () => {
                             <Link to={'/exercises'} className='nav-link'>Exercises</Link>)} */}
 
                         <Link to={'/'} className='nav-link'>Home</Link>
-                        <Link to={'/aboutus'} className='nav-link'>About Us</Link>
 
                         {loggedUser && (
                             <>
@@ -67,7 +65,7 @@ const Navigation = () => {
 
                         {loggedUser &&
 
-                            <Link to="/myprofile" className="nav-link image-zoom">
+                            <Link to={`/profile/${loggedUser._id}`} className="nav-link image-zoom">
                                 <img src={loggedUser?.avatar} alt="Avatar" className="rounded-circle" />
                             </Link>
                         }

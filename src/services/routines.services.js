@@ -28,6 +28,11 @@ class RoutineService {
         return this.api.get(`/getOneRoutine/${routine_id}`)
     }
 
+    getRoutinesByOwner(user_id) {
+        console.log("llega el id del user al servicio", user_id)
+        return this.api.get(`/getRoutinesByOwner/${user_id}`)
+    }
+
     saveRoutine(routineData) {
         return this.api.post('/createRoutine', routineData)
     }
