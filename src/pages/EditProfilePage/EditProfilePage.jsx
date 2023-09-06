@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap"
 import EditProfileForm from "../../components/EditUserForm/EditUserForm"
 
-const EditProfileUser = () => {
+const EditProfile = () => {
 
     return (
         <div className="d-flex justify-content-center">
@@ -14,4 +14,4 @@ const EditProfileUser = () => {
 
 }
 
-export default EditProfileUser
+export default EditProfile

@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-class UploadServices {
+
+class FriendsServices {
 
     constructor() {
-
         this.api = axios.create({
-            baseURL: `${import.meta.env.VITE_API_URL}/upload`
+            baseURL: `${import.meta.env.VITE_API_URL}/friends`
         })
 
         this.api.interceptors.request.use((config) => {
@@ -20,11 +20,12 @@ class UploadServices {
         })
     }
 
-    uploadimage(imageForm) {
-        return this.api.post('/image', imageForm)
-    }
+
+
+
 }
 
-const uploadServices = new UploadServices()
+const friendsServices = new FriendServices()
 
-export default uploadServices
+export default friendsServices
+

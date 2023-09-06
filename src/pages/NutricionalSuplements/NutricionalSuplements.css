@@ -9,3 +9,35 @@
     height: 200px;
     align-items: center;
 }
+
+.product-details {
+    justify-content: left;
+}
+
+.product-details button {
+
+    margin-left: 30px;
+}
+
+.container-products button {
+
+    margin-left: 5px;
+}
+
+.cartProducts {
+
+
+    display: flex;
+
+}
+
+.cartProducts h2 {
+
+    margin-top: 20px;
+
+}
+
+.container-products button {
+
+    margin-right: 10px;
+}
