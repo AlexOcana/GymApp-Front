@@ -34,6 +34,11 @@ class UserServices {
         return this.api.post(`/editUser/${id}`, { userData })
     }
 
+    addGymbro(userId) {
+        return this.api.put("/addGymBro", { userId })
+    }
+
+
     deleteUser(id) {
         return this.api.post(`/deleteUser/${id}`)
     }

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import userServices from "../../services/users.services"
-import { Col, Card, ListGroup, Row, Container } from "react-bootstrap"
+import { Col, Card, ListGroup, Row, Container, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import './CommunityPage.css'
 import { AuthContext } from "../../contexts/auth.context"
@@ -9,13 +9,13 @@ import { AuthContext } from "../../contexts/auth.context"
 const CommunityPage = () => {
 
     const [users, setUsers] = useState([])
+    const [gymBros, setGymBros] = useState([])
     const { loggedUser } = useContext(AuthContext)
 
     useEffect(() => {
         loadUsers()
     }, [])
 
-    userServices
     const loadUsers = () => {
         userServices
             .getAllUsers()
@@ -24,12 +24,12 @@ const CommunityPage = () => {
             .catch(err => console.log(err))
     }
 
-    const addGymBro = (userId, friendId) => {
-        axios
-            .post(`http://localhost:5005/api/friends/${userId}/addGymbro/${friendId}`)
-            .then((response) => console.log(response.data)
-                .loadUsers())
-            .catch((error) => console.log(error));
+    const handlerAddGymBro = (userId) => {
+        userServices
+            .addGymbro(userId)
+            .then(({ data }) => console.log("amigo añadido con exito!!"))
+            .catch(err => console.log(err))
+
     }
 
     return (
@@ -68,9 +68,10 @@ const CommunityPage = () => {
                                             <Link to={`/profile/${user._id}`} className="btn btn-primary buttons-edit">
                                                 See Profile
                                             </Link>
-                                            <Link to="#" className="btn btn-secondary" onClick={() => addGymBro(loggedUser._id, user._id)}>
-                                                Add Gym Bro
-                                            </Link>
+                                            <Button className="btn btn-secondary" onClick={() => handlerAddGymBro(user._id)}>Add to gymbro</Button>
+
+
+
                                         </Card.Body>
                                     </Card>
                                 </Col>

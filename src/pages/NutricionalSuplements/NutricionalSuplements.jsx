@@ -13,6 +13,7 @@ const NutricionalSuplements = () => {
 
 
     const [product, setProduct] = useState([])
+
     const [addProduct, setAddProduct] = useState([])
     console.log(addProduct)
     console.log('0000000000000', product)
@@ -35,7 +36,7 @@ const NutricionalSuplements = () => {
     }
 
     const handleAddtoMyList = (_id) => {
-
+        console.log("este es el id del producto que quiero añadir", _id)
         productsServices
             .sendProduct(_id)
             .then((data) => console.log(data))
@@ -76,9 +77,9 @@ const NutricionalSuplements = () => {
                                     </ListGroup.Item>
                                 </Col>
                                 <Col>
-                                    <Button variant="warning" onClick={() => handleAddtoMyList(_id)}>
-                                        Add to my cart
-                                    </Button>
+
+                                    <Button variant="warning" onClick={() => handleAddtoMyList(_id)}> Add to my list </Button>
+
                                     <Button onClick={() => handleDelete(_id)} className="btn btn-danger">Delete Product of MyCart</Button>
 
                                     {!loggedUser && (
@@ -94,7 +95,7 @@ const NutricionalSuplements = () => {
                     </Row>
                 ))
             }
-            }
+
         </Container >
     );
 }

@@ -20,7 +20,7 @@ const ProfileDetails = () => {
     useEffect(() => {
         getUserDetails();
         getRoutinesByOwner()
-    }, []);
+    }, [user_id]);
 
     const getUserDetails = () => {
         userServices
@@ -57,21 +57,21 @@ const ProfileDetails = () => {
                     <Row className="mt-4 justify-content-center">
                         <Col md={3}>
                             <div className="text-center mt-3">
-                                <img src={user.avatar} alt="User Avatar" style={{ maxWidth: '350px', borderRadius: '20%' }} />
+                                <img src={user.avatar} alt="User Avatar" style={{ maxWidth: '300px', borderRadius: '20%' }} />
                             </div>
                             <Card className="mt-3">
                                 <Card.Body>
-                                    <Card.Title className="text-center"><h2>{user.firstname} {user.lastname} ({user.role})</h2></Card.Title>
+                                    <Card.Title className="text-center"><h5>{user.firstname} {user.lastname} ({user.role})</h5></Card.Title>
                                 </Card.Body>
                                 <ListGroup className="list-group-flush text-center">
                                     <ListGroup.Item>
-                                        <h6> ⚖️ Actual Weight: {user.weigth} kg </h6>
-                                        <h6> 🏋🏻‍♂️ Favourite routines: {user.routine}</h6>
+                                        <p> ⚖️ Actual Weight: {user.weigth} kg </p>
+                                        <p> 🏋🏻‍♂️ Favourite routines: {user.routine}</p>
                                     </ListGroup.Item>
 
                                     <ListGroup.Item>
-                                        <h6> Best RM Chest Press : {user.chest} kg </h6>
-                                        <h6> Best RM Squad Press : {user.squad} kg </h6>
+                                        <p> Best RM Chest Press : {user.chest} kg </p>
+                                        <p> Best RM Squad Press : {user.squad} kg </p>
 
                                     </ListGroup.Item>
                                 </ListGroup>
@@ -79,11 +79,16 @@ const ProfileDetails = () => {
                                 {loggedUser && loggedUser.role === 'ADMIN' && (
                                     <Card.Body className="text-center d-flex">
                                         <Button onClick={handleUserDetele} className="btn btn-danger mr-2">Delete Profile</Button>
-                                        <Link to={`/editProfilePage/${user._id}`} className="btn btn-warning">Edit my Profile</Link>
+                                        <Link to={`/editProfile/${user._id}`} className="btn btn-warning">Edit my Profile</Link>
                                     </Card.Body>
                                 )}
                             </Card>
                         </Col>
+
+
+
+
+
                         <Col md={3}>
                             <h3>My Routines</h3>
                             <Dropdown.Menu show>
@@ -92,28 +97,42 @@ const ProfileDetails = () => {
                                 ))}
                             </Dropdown.Menu>
 
+
+
+
+
+
                         </Col>
                         <Col md={3}>
                             <h3>My Products list</h3>
-                            <Dropdown.Menu show>
-                                {routine.map((elm, idx) => (
-                                    <Dropdown.Item to={`/routines/${elm._id}`} eventKey="1">Action</Dropdown.Item>
-                                ))}
-                            </Dropdown.Menu>
+                            {
+                                routine.map((elm, idx) => {
+                                    return (
+                                        <Link to={`/routines/${elm._id}`}>{elm.title}</Link>
+
+                                    )
+                                }
+                                )
+                            }
 
                         </Col>
+
+
+
+
+
 
 
                         <Col md={2}>
                             <h3>My Gym Bros</h3>
-                            <Dropdown.Menu show>
-                                {user.gymbro.map((elm, idx) => {
+                            {
+                                user.gymbro.map((elm, idx) => {
                                     return (
-                                        <Dropdown.Item>{elm.firstname}<img src={elm.avatar} style={{ width: '50px', borderRadius: '50%', height: '50px' }} /></Dropdown.Item>
+                                        <Link to={`/profile/${elm._id}`}>{elm.firstname}</Link>
                                     )
                                 }
-                                )}
-                            </Dropdown.Menu>
+                                )
+                            }
 
                         </Col>
                     </Row>
