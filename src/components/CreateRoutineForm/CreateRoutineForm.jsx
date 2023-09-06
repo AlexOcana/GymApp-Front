@@ -1,13 +1,21 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Form, Button, Row, Col, Card } from "react-bootstrap"
 import * as Constants from './../../consts/routine.consts'
 import routinesService from "../../services/routines.services"
 import exercisesService from "../../services/exercise.services"
+import { AuthContext } from "../../contexts/auth.context"
 
 const CreateRoutineForm = () => {
-
-    const [exercises, setExercises] = useState()
+    const { loggedUser } = useContext(AuthContext)
+    const [exercises, setExercises] = useState([])
+    const [inputList, setInputList] = useState(new Map())
     const [muscleGroup, setMuscleGroup] = useState(null)
+    const [routineData, setRoutineData] = useState({
+        title: '',
+        description: '',
+        training: Constants.ROUTINE_TYPES[0],
+        owner: loggedUser._id
+    })
 
     useEffect(() => {
         muscleGroup && loadExercises()
@@ -20,15 +28,13 @@ const CreateRoutineForm = () => {
             .catch(err => console.log(err))
     }
 
-    const [routineData, setRoutineData] = useState({
-        title: '',
-        description: '',
-        training: '',
-        owner: ''
-    })
-
-
-    const [inputList, setInputList] = useState({})
+    let routine = {
+        title: routineData.title,
+        description: routineData.description,
+        training: routineData.training.name,
+        owner: routineData.owner,
+        exercises: Object.fromEntries(inputList.entries())
+    }
 
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
@@ -41,33 +47,17 @@ const CreateRoutineForm = () => {
 
     const handleExerciseInputChange = (id, e) => {
         const { name, value } = e.currentTarget
-        const updatedList = { [name]: value }
-        inputList[id] = updatedList
+        const updatedProperties = inputList
+        inputList.set(id, { id, [name]: value })
 
-        setInputList({ ...inputList })
-    }
-
-    const handleRemoveClick = (id, e) => {
-        const { name, value } = e.Target
-
-        const updatedList = { [name]: value }
-        inputList[id] = updatedList
-
-        setInputList({ ...inputList })
-    }
-
-    const handleAddClick = (id, e) => {
-        const reps = e.target.value
-        console.log('repsValue:--------------->', e.target.value)
-        const updatedInputList = { ...inputList, [id]: { reps } }
-        setInputList(updatedInputList)
+        setInputList(updatedProperties)
     }
 
     const handleRoutineSubmit = e => {
         e.preventDefault()
 
         routinesService
-            .saveRoutine({ routineData, inputList })
+            .saveRoutine(routine)
             .then(console.log('done'))
             .catch(err => console.log(err))
     }
@@ -81,10 +71,14 @@ const CreateRoutineForm = () => {
                     <Form.Label>Title</Form.Label>
                     <Form.Control value={routineData.title} type="text" name="title" onChange={handleInputChange} />
                 </Form.Group>
+
+
                 <Form.Group>
                     <Form.Label>Description</Form.Label>
                     <Form.Control as={'textarea'} value={routineData.description} type="text" name="description" onChange={handleInputChange} />
                 </Form.Group>
+
+
                 <Form.Group>
                     <Form.Label>Type</Form.Label>
                     <Form.Select name="training" onChange={handleInputChange}>
@@ -94,47 +88,48 @@ const CreateRoutineForm = () => {
                     </Form.Select>
                 </Form.Group>
 
+
                 <Form.Group>
                     <Form.Label>Muscle Group</Form.Label>
                     <Form.Select name="muscle" onChange={handleMuscleChange}>
                         {
-                            Constants.TARGET_MUSCLES.map(elm => <option key={elm} value={elm}>{elm}</option>)
+                            Constants.TARGET_MUSCLES.map(elm => <option key={elm} value={elm}>{elm.charAt(0).toUpperCase() + elm.slice(1)}</option>)
                         }
                     </Form.Select>
                 </Form.Group>
+
+
 
                 <div className="d-grid mt-3">
                     <Button variant="dark" type="submit">Create New Routine</Button>
                 </div>
 
-            </Form>
+                <Row>
 
-            <Row>
+                    {
+                        exercises &&
 
-                {
-                    exercises ?
-
-                        exercises.map(({ bodyPart, equipment, gifUrl, id, name, target }) => {
+                        exercises.map(elm => {
                             return (
-                                <Col key={id}>
+                                <Col key={elm.id}>
                                     <Card>
-                                        <Card.Img variant="top" src={gifUrl} />
+                                        <Card.Img variant="top" src={elm.gifUrl} />
                                         <Card.Body>
-                                            <Card.Title>{name}</Card.Title>
+                                            <Card.Title>{elm.name}</Card.Title>
                                             <Form.Group>
                                                 <Form.Label>Reps</Form.Label>
-                                                <Form.Control value={inputList.id} type="number" name="reps" onChange={e => handleExerciseInputChange(id, e)} />
-                                                <Button onClick={e => handleAddClick(id, e)}>Add to Routine</Button>
-                                                <Button onClick={e => handleRemoveClick(id, e)}>Remove from Routine</Button>
+                                                <Form.Control value={inputList.id} type="number" name="reps" onChange={e => handleExerciseInputChange(elm.id, e)} />
                                             </Form.Group>
                                         </Card.Body>
                                     </Card>
                                 </Col>
                             )
 
-                        }) : <h1>Loading...</h1>
-                }
-            </Row>
+                        })
+                    }
+                </Row>
+            </Form>
+
         </>
 
     )
