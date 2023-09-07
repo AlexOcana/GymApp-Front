@@ -4,6 +4,9 @@ import routinesService from "../../services/routines.services";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Row, Col, Card, ListGroup, Button, Dropdown } from "react-bootstrap";
 import { AuthContext } from '../../contexts/auth.context';
+import productsServices from '../../services/products.services'
+import EditProfileForm from "../../components/EditUserForm/EditUserForm";
+
 
 
 const ProfileDetails = () => {
@@ -14,13 +17,14 @@ const ProfileDetails = () => {
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
     const [routine, setRoutine] = useState([])
-    const [friend, setFriend] = useState([])
+    const [products, setProducts] = useState([])
 
 
     useEffect(() => {
         getUserDetails();
         getRoutinesByOwner()
-    }, [user_id]);
+        loggedUser && getProducts()
+    }, [user_id, loggedUser]);
 
     const getUserDetails = () => {
         userServices
@@ -37,6 +41,14 @@ const ProfileDetails = () => {
 
     }
 
+    const getProducts = () => {
+
+        userServices
+            .getUserInfo('products', loggedUser._id)
+            .then(({ data }) => setProducts(data.products))
+            .catch(err => console.log(err))
+    }
+
     const handleUserDetele = (e) => {
         e.preventDefault()
         userServices
@@ -45,6 +57,17 @@ const ProfileDetails = () => {
             .catch((err) => console.log(err));
     };
 
+
+    const handleRemove = (_id) => {
+        console.log("producto a eliminar de la lista de usuario", _id)
+        productsServices
+            .removeProduct(_id)
+            .then(() => {
+                getProducts()
+                getUserDetails()
+            })
+            .catch((err) => console.log(err));
+    };
 
 
     return (
@@ -57,7 +80,7 @@ const ProfileDetails = () => {
                     <Row className="mt-4 justify-content-center">
                         <Col md={3}>
                             <div className="text-center mt-3">
-                                <img src={user.avatar} alt="User Avatar" style={{ maxWidth: '300px', borderRadius: '20%' }} />
+                                <img src={user.avatar} alt="User Avatar" style={{ maxWidth: '250px', borderRadius: '30%' }} />
                             </div>
                             <Card className="mt-3">
                                 <Card.Body>
@@ -76,18 +99,15 @@ const ProfileDetails = () => {
                                     </ListGroup.Item>
                                 </ListGroup>
 
-                                {loggedUser && loggedUser.role === 'ADMIN' && (
+                                {(loggedUser.role === 'ADMIN' || loggedUser._id === user._id) && (
                                     <Card.Body className="text-center d-flex">
                                         <Button onClick={handleUserDetele} className="btn btn-danger mr-2">Delete Profile</Button>
-                                        <Link to={`/editProfile/${user._id}`} className="btn btn-warning">Edit my Profile</Link>
+                                        <EditProfileForm getUserDetails={getUserDetails} />
+                                        {/* <Link to={`/editProfile/${user._id}`} className="btn btn-warning">Edit my Profile</Link> */}
                                     </Card.Body>
                                 )}
                             </Card>
                         </Col>
-
-
-
-
 
                         <Col md={3}>
                             <h3>My Routines</h3>
@@ -98,18 +118,16 @@ const ProfileDetails = () => {
                             </Dropdown.Menu>
 
 
-
-
-
-
                         </Col>
                         <Col md={3}>
                             <h3>My Products list</h3>
                             {
-                                routine.map((elm, idx) => {
+                                products.map((elm, idx) => {
                                     return (
-                                        <Link to={`/routines/${elm._id}`}>{elm.title}</Link>
-
+                                        <>
+                                            <h5>{elm.name}</h5>
+                                            <Button variant='danger' onClick={() => handleRemove(elm._id)} className="btn btn-danger">Remove Product</Button>
+                                        </>
                                     )
                                 }
                                 )
@@ -117,18 +135,15 @@ const ProfileDetails = () => {
 
                         </Col>
 
-
-
-
-
-
-
                         <Col md={2}>
                             <h3>My Gym Bros</h3>
                             {
                                 user.gymbro.map((elm, idx) => {
+
                                     return (
-                                        <Link to={`/profile/${elm._id}`}>{elm.firstname}</Link>
+                                        <ul>
+                                            <li><Link style={{ fontSize: '1.3em', padding: '9px' }} to={`/profile/${elm._id}`}>{elm.firstname} <img src={elm.avatar} style={{ width: '40px', borderRadius: '50%', marginLeft: '20px', borderColor: 'black', border: '1px solid black' }} /> </Link></li>
+                                        </ul>
                                     )
                                 }
                                 )

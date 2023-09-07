@@ -38,6 +38,14 @@ class UserServices {
         return this.api.put("/addGymBro", { userId })
     }
 
+    getUserInfo(filter, user_id) {
+        return this.api.get(`/getUserInfo/${filter}/${user_id}`)
+    }
+
+    deleteGymbro(userId) {
+        return this.api.put("/deleteGymbro", { userId })
+    }
+
 
     deleteUser(id) {
         return this.api.post(`/deleteUser/${id}`)
@@ -48,4 +56,3 @@ class UserServices {
 const userServices = new UserServices()
 
 export default userServices
-
