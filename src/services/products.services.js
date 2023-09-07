@@ -32,13 +32,16 @@ class ProductsServices {
 
 
     sendProduct(id) {
+        console.log("este es el id del producto a añadir", id)
         return this.api.put(`/sendProduct/${id}`)
     }
 
 
-    editOneProduct(id, productData) {
-        return this.api.post(`/editOneProduct/${id}`, { productData })
+    removeProduct(id) {
+        console.log("controlador id de producto para quitar de la lista de usuario", id)
+        return this.api.put(`/removeProduct/${id}`)
     }
+
 
     deleteProduct(id) {
         return this.api.delete(`/deleteProduct/${id}`)

@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Muscle Muncher",
+        "brand": "FitFunnies",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085545/15_kvbnym.jpg"
+    },
+    {
+        "name": "Protein Puffinator",
+        "brand": "LaughingGains",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085544/14_xtorzp.jpg"
+    },
+    {
+        "name": "Bicep Bubbler",
+        "brand": "FlexFrolic",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085547/19_jpjyan.jpg"
+    },
+    {
+        "name": "Gym Bunny Gummies",
+        "brand": "HahaHealth",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085541/9_h5r1s0.jpg"
+    },
+    {
+        "name": "Absurd Aminos",
+        "brand": "LudicrousLifts",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085543/12_sbu5uh.jpg"
+    },
+    {
+        "name": "Whey to Go!",
+        "brand": "ChuckleChampion",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085547/18_jqfgvn.jpg"
+    },
+    {
+        "name": "Hilarious Hydration",
+        "brand": "GymJokes",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085546/17_x5iteh.jpg"
+    },
+    {
+        "name": "Crazy Creatine",
+        "brand": "LiftLunatics",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085551/25_jjjck2.jpg"
+    },
+    {
+        "name": "Swole Sweets",
+        "brand": "FitFunnies",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085549/21_awmw2u.jpg"
+    },
+    {
+        "name": "Laughing L-Carnitine",
+        "brand": "LaughingGains",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1693936595/13_i54slv.jpg"
+    },
+    {
+        "name": "Puny Pump Pre-Workout",
+        "brand": "FlexFrolic",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085551/23_lidsqa.jpg"
+    },
+    {
+        "name": "Chuckling Creatine",
+        "brand": "HahaHealth",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085551/24_kiy2tj.jpg"
+    },
+    {
+        "name": "Giggle Gains Glutamine",
+        "brand": "LudicrousLifts",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1693936594/10_lstp3t.jpg"
+    },
+    {
+        "name": "Comical Casein",
+        "brand": "ChuckleChampion",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085551/23_lidsqa.jpg"
+    },
+    {
+        "name": "Whimsical Whey",
+        "brand": "GymJokes",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085540/7_xrlv95.jpg"
+    },
+    {
+        "name": "Silly Stamina Supplement",
+        "brand": "LiftLunatics",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085551/23_lidsqa.jpg"
+    },
+    {
+        "name": "Jokester Joint Support",
+        "brand": "FitFunnies",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085551/23_lidsqa.jpg"
+    },
+    {
+        "name": "Lighthearted L-Arginine",
+        "brand": "LaughingGains",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085537/1_vlm8at.jpg"
+    },
+    {
+        "name": "Guffawing Gainer",
+        "brand": "FlexFrolic",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085537/2_ixepmc.jpg"
+    },
+    {
+        "name": "Amusing Amino Acids",
+        "brand": "HahaHealth",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085551/23_lidsqa.jpg"
+    },
+    {
+        "name": "Gym Giggle Gummies",
+        "brand": "LudicrousLifts",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085551/23_lidsqa.jpg"
+    },
+    {
+        "name": "Mirthful Multivitamin",
+        "brand": "ChuckleChampion",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085551/23_lidsqa.jpg"
+    },
+    {
+        "name": "Fit Funnies Fiber",
+        "brand": "GymJokes",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085551/23_lidsqa.jpg"
+    },
+    {
+        "name": "Laughable L-Citrulline",
+        "brand": "LiftLunatics",
+        "image": "https://res.cloudinary.com/daqyvggzm/image/upload/v1694085551/23_lidsqa.jpg"
+    }
+]

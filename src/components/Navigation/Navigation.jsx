@@ -33,12 +33,13 @@ const Navigation = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
 
-                        <Link to={'/'} className='nav-link'>Home</Link>
+
 
                         <Link to={'/exercises'} className='nav-link'>Exercises</Link>
 
                         {loggedUser && (
                             <>
+                                <Link to={'/exercises'} className='nav-link'>Search Your Exercices</Link>
                                 <Link to={'/nutrition'} className='nav-link'>Nutrition</Link>
                                 <Link to={'/routines'} className='nav-link'>Routines By Type</Link>
                                 <Link to={'/routines-list'} className='nav-link'>All Routines</Link>
@@ -51,6 +52,8 @@ const Navigation = () => {
 
                         {!loggedUser && (
                             <>
+                                <Link to={'/'} className='nav-link'>Home</Link>,
+                                <Link to={'/exercises'} className='nav-link'>Search Your Exercices</Link>
                                 <Link to={'#'} className='nav-link' onClick={handleLoginModalShow}>Login</Link>
                                 <Link to={'#'} className='nav-link' onClick={handleSignupModalShow}>Signup</Link>
                             </>
@@ -60,15 +63,15 @@ const Navigation = () => {
 
                     </Nav>
 
-                    <div className="d-flex profile-user" style={{ marginRight: '100px' }}>
-                        <Link to={'/'} className='nav-link' style={{ marginTop: '8px', color: 'grey', marginRight: '10px' }} onClick={logout}>Log Out</Link>
-                        <span className='navbar-text'>{loggedUser ? loggedUser.firstname : 'Not Logged'}</span>
+                    <div className="d-flex profile-user" style={{ marginRight: '50px' }}>
+                        <span style={{ marginRight: '20px', color: 'white' }} className='navbar-text'>{loggedUser ? loggedUser.firstname && loggedUser.lastname : 'Not Logged'}</span>
 
                         {loggedUser &&
-
-                            <Link to={`/profile/${loggedUser._id}`} className="nav-link image-zoom">
-                                <img src={loggedUser?.avatar} alt="Avatar" className="rounded-circle" />
-                            </Link>
+                            <>
+                                <Link to={'/'} className='nav-link' style={{ marginTop: '8px', color: 'yellow' }} onClick={logout}>Log Out</Link>
+                                <Link to={`/profile/${loggedUser._id}`} className="nav-link image-zoom">
+                                    <img src={loggedUser?.avatar} alt="Avatar" className="rounded-circle" /></Link>
+                            </>
                         }
 
                     </div>

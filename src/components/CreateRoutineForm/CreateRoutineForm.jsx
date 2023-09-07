@@ -46,12 +46,17 @@ const CreateRoutineForm = () => {
     }
 
     const handleExerciseInputChange = (id, e) => {
+        console.log('LOL')
         const { name, value } = e.currentTarget
         const updatedProperties = inputList
         inputList.set(id, { id, [name]: value })
-
+        console.log(inputList)
         setInputList(updatedProperties)
     }
+
+    useEffect(() => {
+        console.log('..........', inputList)
+    }, [inputList])
 
     const handleRoutineSubmit = e => {
         e.preventDefault()
