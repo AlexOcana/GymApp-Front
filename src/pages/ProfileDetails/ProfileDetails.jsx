@@ -16,7 +16,7 @@ const ProfileDetails = () => {
     const [routine, setRoutine] = useState([])
     const [friend, setFriend] = useState([])
 
-
+    console.log(routine)
     useEffect(() => {
         getUserDetails();
         getRoutinesByOwner()
@@ -93,7 +93,7 @@ const ProfileDetails = () => {
                             <h3>My Routines</h3>
                             <Dropdown.Menu show>
                                 {routine.map((elm, idx) => (
-                                    <Dropdown.Item to={`/routines/${elm._id}`} eventKey="1">Action</Dropdown.Item>
+                                    <Dropdown.Item key={idx} eventKey="1"><Link style={{ textDecoration: 'none', color: 'inherit' }} to={`/routine/${elm._id}`} >{elm.title} </Link></Dropdown.Item>
                                 ))}
                             </Dropdown.Menu>
 

@@ -31,7 +31,7 @@ const CreateRoutineForm = () => {
     let routine = {
         title: routineData.title,
         description: routineData.description,
-        training: routineData.training.name,
+        training: routineData.training,
         owner: routineData.owner,
         exercises: Object.fromEntries(inputList.entries())
     }
@@ -111,13 +111,13 @@ const CreateRoutineForm = () => {
 
                         exercises.map(elm => {
                             return (
-                                <Col key={elm.id}>
-                                    <Card>
+                                <Col className="mb-4 mt-4" xs={12} md={6} lg={3} key={elm.id}>
+                                    <Card style={{ height: '500px' }}>
                                         <Card.Img variant="top" src={elm.gifUrl} />
                                         <Card.Body>
                                             <Card.Title>{elm.name}</Card.Title>
                                             <Form.Group>
-                                                <Form.Label>Reps</Form.Label>
+                                                <Form.Label>Reps:</Form.Label>
                                                 <Form.Control value={inputList.id} type="number" name="reps" onChange={e => handleExerciseInputChange(elm.id, e)} />
                                             </Form.Group>
                                         </Card.Body>

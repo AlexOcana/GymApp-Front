@@ -5,8 +5,8 @@ const CreateRoutinePage = () => {
 
     return (
         <div className="CreateRoutine d-flex justify-content-center">
-            <Container>
-                <h1>CREAR RUTINA</h1>
+            <Container className="mt-2">
+                <h1>Create Routine</h1>
                 <CreateRoutineForm />
             </Container >
         </div >

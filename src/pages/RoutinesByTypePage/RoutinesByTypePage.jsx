@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
-import { Card, Col, Container, Row, Spinner } from "react-bootstrap"
+import { useParams, Link } from "react-router-dom"
+import { Container, Row, Col, Card } from "react-bootstrap"
 import routinesService from "../../services/routines.services"
-import { Link } from "react-router-dom"
 
-const RoutinesListPage = () => {
+const RoutinesByTypePage = () => {
+    const { routineType } = useParams()
     const [routines, setRoutines] = useState([])
+
+    console.log(routineType)
 
     useEffect(() => {
         loadRoutines()
@@ -13,7 +16,7 @@ const RoutinesListPage = () => {
 
     const loadRoutines = () => {
         routinesService
-            .getAllRoutines()
+            .getRoutinesByType(routineType)
             .then(({ data }) => setRoutines(data))
             .catch(err => console.log(err))
     }
@@ -52,8 +55,6 @@ const RoutinesListPage = () => {
 
         </div >
     )
-
-
 }
 
-export default RoutinesListPage
+export default RoutinesByTypePage

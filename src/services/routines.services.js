@@ -24,13 +24,21 @@ class RoutineService {
         return this.api.get('/getAllRoutines')
     }
 
+    getRoutinesByType(routineType) {
+        return this.api.get(`/getRoutinesByType/${routineType}`)
+    }
+
     getOneRoutine(routine_id) {
         return this.api.get(`/getOneRoutine/${routine_id}`)
     }
 
     getRoutinesByOwner(user_id) {
-        console.log("llega el id del user al servicio", user_id)
         return this.api.get(`/getRoutinesByOwner/${user_id}`)
+    }
+
+    getRoutineExercises(routine_id) {
+        return this.api.get(`/getRoutineExercises/${routine_id}`)
+
     }
 
     saveRoutine(routineData) {

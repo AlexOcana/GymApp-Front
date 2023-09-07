@@ -10,7 +10,7 @@ const VideoPlayer = () => {
             loop={true}
             controls={false}
             muted={true}
-            url={'https://www.youtube.com/watch?v=Dbw-lVCWszA'}
+            url={''}
             style={{
                 position: "absolute",
                 top: 0,
