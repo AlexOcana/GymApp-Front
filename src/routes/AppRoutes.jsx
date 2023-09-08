@@ -10,7 +10,6 @@ import EditProfile from "../pages/EditProfilePage/EditProfilePage"
 import NutricionalSuplements from "../pages/NutricionalSuplements/NutricionalSuplements"
 import RoutinesListPage from "../pages/RoutinesListPage/RoutinesListPage"
 import RoutineDetailsPage from "../pages/RoutineDetailsPage/RoutineDetailsPage"
-import ExercisesPage from "../pages/SearchExercicesPage/ExercisesPage"
 import RoutinesPage from "../pages/ShowRutinesPage/RoutinesPage"
 import RoutinesByTypePage from "../pages/RoutinesByTypePage/RoutinesByTypePage"
 

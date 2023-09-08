@@ -30,19 +30,23 @@ const RoutinesByTypePage = () => {
                     {
                         routines ? routines.map(({ title, training, owner, _id, }) => {
                             return (
-                                <Col className="d-flex justify-content-center" key={_id} lg={12} md={6}>
-                                    <Card className="mb-5" bg={'dark'} text={'light'}>
-                                        <Card.Header>{title}</Card.Header>
-                                        <img style={{ width: 150 }} src={owner.avatar} alt="" />
+                                <Col className="d-flex justify-content-center" key={_id} lg={6} md={6}>
+                                    <Card>
+                                        <Card className="" bg={'dark'} text={'light'}></Card>
+                                        <Card.Header style={{ fontSize: '1.3em', fontWeight: 'bold' }}>{title}</Card.Header>
+                                        <Card.Img style={{}} variant="top" src={owner.avatar} />
                                         <Card.Body>
-                                            <Card.Title>{training}</Card.Title>
-                                            <Card.Text>By: {owner.firstname}</Card.Text>
+                                            <Card.Title>Type Traning: {training}</Card.Title>
+                                            <Card.Title>By: {owner.firstname}</Card.Title>
                                             <div className="d-grid">
                                                 <Link to={`/routine/${_id}`} className='btn btn-warning'>Routine Details </Link>
                                             </div>
                                         </Card.Body>
                                     </Card>
                                 </Col>
+
+
+
                             )
                         }) : <Spinner animation="border" variant="dark" />
 

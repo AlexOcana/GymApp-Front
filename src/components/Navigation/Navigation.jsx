@@ -35,14 +35,13 @@ const Navigation = () => {
 
 
 
-                        <Link to={'/exercises'} className='nav-link'>Exercises</Link>
 
                         {loggedUser && (
                             <>
                                 <Link to={'/exercises'} className='nav-link'>Search Your Exercices</Link>
                                 <Link to={'/nutrition'} className='nav-link'>Nutrition</Link>
-                                <Link to={'/routines'} className='nav-link'>Routines By Type</Link>
-                                <Link to={'/routines-list'} className='nav-link'>All Routines</Link>
+                                <Link to={'/routines'} className='nav-link'>Routines</Link>
+                                {/* <Link to={'/routines-list'} className='nav-link'>All Routines</Link> */}
                                 <Link to={'/newroutine'} className='nav-link'>Create Routine</Link>
                                 <Link to={'/community'} className='nav-link'>Community</Link>
                             </>

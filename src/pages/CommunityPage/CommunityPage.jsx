@@ -14,6 +14,7 @@ const CommunityPage = () => {
 
     useEffect(() => {
         loadUsers()
+        loggedUser && getGymbroInfo()
 
     }, [loggedUser])
 
@@ -22,7 +23,7 @@ const CommunityPage = () => {
             .getAllUsers()
             .then(({ data }) => {
                 setUsers(data)
-                ocaña()
+
             })
 
 
@@ -34,14 +35,23 @@ const CommunityPage = () => {
     const handlerAddGymBro = (userId) => {
         userServices
             .addGymbro(userId)
-            .then(({ data }) => console.log("amigo añadido con exito!!"))
+            .then(() => getGymbroInfo())
             .catch(err => console.log(err))
 
     }
 
-    const ocaña = () => {
+    const handlerDeleteGymBro = (userId) => {
         userServices
-            .getUserInfo('gymbro', loggedUser._id).then(({ data }) => console.log(data)).catch()
+            .deleteGymbro(userId)
+            .then(() => {
+                getGymbroInfo()
+            })
+            .catch(err => console.log(err));
+    }
+
+    const getGymbroInfo = () => {
+        userServices
+            .getUserInfo('gymbro', loggedUser._id).then(({ data }) => setGymBros(data.gymbro.map(elm => elm._id))).catch()
 
     }
 
@@ -82,11 +92,17 @@ const CommunityPage = () => {
                                                 See Profile
                                             </Link>
 
-                                            {user._id !== loggedUser._id &&
-
-                                                <Button className="btn btn-secondary" onClick={() => handlerAddGymBro(user._id)}>Add to gymbro</Button>
-
-                                            }
+                                            {user._id !== loggedUser._id && (
+                                                gymBros.length > 0 && gymBros.includes(user._id) ? (
+                                                    <Button className="btn btn-danger" onClick={() => handlerDeleteGymBro(user._id)}>
+                                                        Delete gymbro
+                                                    </Button>
+                                                ) : (
+                                                    <Button className="btn btn-secondary" onClick={() => handlerAddGymBro(user._id)}>
+                                                        Add to gymbro
+                                                    </Button>
+                                                )
+                                            )}
 
 
 

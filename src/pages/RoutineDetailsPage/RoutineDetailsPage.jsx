@@ -50,6 +50,7 @@ const RoutineDetailsPage = () => {
 
                         </Row>
 
+
                         <Row>
                             {
                                 exercises ? exercises.map(({ bodyPart, equipment, gifUrl, id, name, target }, idx) => {
